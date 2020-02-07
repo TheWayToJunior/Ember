@@ -1,0 +1,25 @@
+﻿@page "/"
+
+<div class="content">
+    <div class="main-content">
+        @*<SurveyPrompt Title="How is Blazor working for you?" />*@
+
+        <div class="work-block" id="work">
+        </div>
+        <div class="news-block" id="news">
+            
+        </div>
+    </div>
+
+    @*<ScrollPanel Indexs="indexsNav"/>*@
+</div>
+
+@code
+{
+    private Dictionary<string, string> indexsNav = new Dictionary<string, string>() 
+    {
+        { "top", "Вверх" },
+        { "work", "Работа" },
+        { "news", "Новости" }
+    };
+}

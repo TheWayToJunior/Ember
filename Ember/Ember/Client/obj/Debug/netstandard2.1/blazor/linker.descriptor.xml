@@ -1,0 +1,5 @@
+﻿<linker>
+  <assembly fullname="Ember.Client">
+    <type fullname="*" required="true" />
+  </assembly>
+</linker>

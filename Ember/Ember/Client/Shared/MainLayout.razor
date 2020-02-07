@@ -1,0 +1,71 @@
+﻿@inherits LayoutComponentBase
+
+@inject NavigationManager navigationManager
+@inject IJSRuntime JSRuntime
+
+    <div class="main">
+
+        @*@if ((Body.Target as Microsoft.AspNetCore.Components.RouteView)
+            .RouteData.PageType.Name == "Index")
+        {*@
+        <div class="intro">
+            <div class="filter"></div>
+            <div class="banner">
+                <a class="nav-header-link">
+                    <i class="material-icons">
+                        chevron_left
+                    </i>
+                </a>
+                <div class="banner-content">
+                    <div class="banner-text">
+                        <h2>СПП Уголек <br> ГП <span>Донбасстепло<span>энерго</span></span></h2>
+                        <p>
+                            бренд с почти вековой историей. Сегодня это —
+                            энергогенерирующая компания, в основе философии
+                            которой лежит успешная интеграция инновационных
+                            решений в традиционное производство.
+                        </p>
+                    </div>
+                    <div class="banner-buttom">
+                        <a class="btn-linck" href="#">
+                            <i class="material-icons icon">
+                                supervisor_account
+                            </i>
+                            Личный кабинет
+                        </a>
+
+                        <div class="scroll-indicator" @onclick="() => JSRuntime.ScrollToElementId(indexs[0])">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="nav-header-link" >
+                   <i class="material-icons">
+                       navigate_next
+                   </i>
+                </a>
+            </div>
+        </div>
+        @*}*@
+
+        <header id="header">
+            <NavMenu Image="/img/Logo.png" CssClassImage="logo-img" />
+        </header>
+
+        <div class="body" id="top">
+            @Body
+        </div>
+
+        <footer>
+            <h1>Footer</h1>
+        </footer>
+    </div>
+
+@code
+{
+    string[] indexs = { "top" };
+}
+

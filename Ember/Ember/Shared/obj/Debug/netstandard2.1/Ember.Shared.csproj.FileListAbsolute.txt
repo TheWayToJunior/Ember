@@ -1,0 +1,8 @@
+D:\С#\.NET Core\Ember\Ember\Shared\bin\Debug\netstandard2.1\Ember.Shared.deps.json
+D:\С#\.NET Core\Ember\Ember\Shared\bin\Debug\netstandard2.1\Ember.Shared.dll
+D:\С#\.NET Core\Ember\Ember\Shared\bin\Debug\netstandard2.1\Ember.Shared.pdb
+D:\С#\.NET Core\Ember\Ember\Shared\obj\Debug\netstandard2.1\Ember.Shared.csprojAssemblyReference.cache
+D:\С#\.NET Core\Ember\Ember\Shared\obj\Debug\netstandard2.1\Ember.Shared.AssemblyInfoInputs.cache
+D:\С#\.NET Core\Ember\Ember\Shared\obj\Debug\netstandard2.1\Ember.Shared.AssemblyInfo.cs
+D:\С#\.NET Core\Ember\Ember\Shared\obj\Debug\netstandard2.1\Ember.Shared.dll
+D:\С#\.NET Core\Ember\Ember\Shared\obj\Debug\netstandard2.1\Ember.Shared.pdb
