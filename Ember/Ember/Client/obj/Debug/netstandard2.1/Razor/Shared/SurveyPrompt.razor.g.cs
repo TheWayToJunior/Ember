@@ -72,6 +72,13 @@ using Ember.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+using BlazorComponentUtilities;
+
+#line default
+#line hidden
+#nullable disable
     public partial class SurveyPrompt : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

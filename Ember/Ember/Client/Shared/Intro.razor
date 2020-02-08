@@ -1,0 +1,27 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div class="intro">
+    <div class="filter"></div>
+    <div class="banner" style=" background-image: url('@ImgSource')">
+        <div class="banner-content">
+            @ChildContent
+
+            <div class="scroll-indicator" @onclick="() => JSRuntime.ScrollToElementId(BodyId)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string BodyId { get; set; }
+
+    [Parameter]
+    public string ImgSource { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } 
+}

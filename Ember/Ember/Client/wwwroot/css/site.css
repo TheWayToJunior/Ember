@@ -10,6 +10,25 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0;
 }
 
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
 .main-container {
     position: relative;
 }
@@ -26,7 +45,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-content {
     width:100%;
-    /*margin-left: 100px;*/
 }
 
 .body {
@@ -62,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 765px;
     height: calc(100vh - 150px);
     min-height: 625px;
+    background-color: #fff;
 }
 
 .filter {
@@ -97,18 +116,24 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 765px;
     height: calc(100vh - 150px);
     min-height: 625px;
-    background: url('https://sun9-23.userapi.com/c848628/v848628460/1990ed/N2tWWazZnlQ.jpg') no-repeat center center fixed;
-    /* https://open4business.com.ua/wp-content/uploads/2017/04/71433656.jpg не Трактор) */
-    background-size: cover;
+    background-size: cover !important;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-@media only screen and (max-width: 890px) {
-    .banner {
-        background: url('https://open4business.com.ua/wp-content/uploads/2017/04/71433656.jpg') no-repeat center center;
-    }
+
+.banner {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+    @media only screen and (max-width: 890px) {
+        .banner {
+            background-attachment: initial;
+        }
 
     .nav-header-link {
         display: none;
@@ -120,6 +145,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .banner-content {
+    position: relative;
+    min-height: 462px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -154,12 +181,11 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 55px;
 }
 
 .btn-linck {
     text-decoration: none;
-    padding: 10px 18px;
+    padding: 10px 12px;
     font-size: 12px;
     background-color: #2196f3;
     color: #fff;
@@ -180,6 +206,8 @@ a.btn-linck i {
 }
 
 .scroll-indicator {
+    position: absolute;
+    bottom: 0;
     margin-top: 35px;
     transform: translate(-50%, -50%);
 }
@@ -230,7 +258,6 @@ header {
     width: 100%;
     min-width: 765px;
     height: 50px;
-    /*background: #000;*/
     margin-top: -50px;
     padding: 0 100px;
     box-sizing: border-box;
@@ -306,14 +333,6 @@ header {
                 width: 100%
             }
 
-/*.active {
-    color: #6c6b6b;
-}*/
-
-/*.active:hover {
-        color: #6c6b6b;
-    }*/
-
 .active::after {
     content: "";
     position: absolute;
@@ -363,7 +382,6 @@ a:not([href]):not([tabindex]) {
 .news-category {
     width: 100%;
     display: flex;
-    /*margin: 15px;*/
     margin-bottom: 55px;
 }
 
@@ -439,7 +457,7 @@ a:not([href]):not([tabindex]) {
     padding: 20px;
     background: #fff;
     transition: 0.5s;
-    width: 350px;
+    /*width: 350px;*/
     height: 300px;
 }
 
@@ -492,19 +510,33 @@ a:not([href]):not([tabindex]) {
 }
 
 @media (max-width: 576px) {
-    .col-sm-4 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
+    .card {
+        position: relative;
+        height: 648px;
+        overflow: hidden
     }
+
+        .card .news-content .news-header {
+            margin: 0;
+            padding: 10px 2px;
+            height: 75px;
+            font-size: 32px;
+            overflow: hidden;
+        }
+
     .card:hover .news-content p {
         opacity: 1;
-        font-size: 18px;
+        font-size: 24px;
     }
 
     .card .news-content .time a, .card .news-content .time a i, news-content a {
-        font-size: 18px !important;
+        font-size: 24px !important;
     }
 }/*Footor*/
 footer {
     margin-top: 35px;
-    height: 250px;    width: 100%;    background: #000;}
+    height: 150px;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    background: #eee;
+}

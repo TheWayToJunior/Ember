@@ -42,6 +42,10 @@
       "frameworks": {
         "netstandard2.1": {
           "dependencies": {
+            "BlazorComponentUtilities": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "Microsoft.AspNetCore.Blazor": {
               "target": "Package",
               "version": "[3.1.0-preview4.19579.2, )"

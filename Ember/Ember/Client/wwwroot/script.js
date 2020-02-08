@@ -24,6 +24,5 @@ $(window).scroll(function () {
         $('#header').addClass('header-background');
     } else {
         $('#header').removeClass('header-background');
-        this.console.log(($("div.intro").height()));
     }
 });
