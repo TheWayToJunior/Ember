@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CA1822: Пометьте члены как статические
+dotnet_diagnostic.CA1822.severity = none
+
+# CA1052: Типы статических заполнителей должны быть Static или NotInheritable
+dotnet_diagnostic.CA1052.severity = none

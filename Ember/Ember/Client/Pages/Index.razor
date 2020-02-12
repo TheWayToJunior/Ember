@@ -1,26 +1,47 @@
 ﻿@page "/"
 
+@inject HttpClient HttpClient
+
 <div class="content">
     <div class="main-content">
-        @*<SurveyPrompt Title="How is Blazor working for you?" />*@
-
         <div class="work-block" id="work">
             <h2>Рабочий процесс</h2>
         </div>
+
         <div class="news-block" id="news">
             <h2>Новости</h2>
+            <div class="container">
+
+                @if (news == null)
+                {
+                    <h5>Looding...</h5>
+                }
+                else
+                {
+                    <div class="row">
+                        @foreach (var item in news)
+                        {
+                            <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
+                                <span>
+                                    @item.Description
+                                </span>
+                            </NewsCard>
+                        }
+                    </div>
+                }
+            </div>
         </div>
     </div>
-
-    @*<ScrollPanel Indexs="indexsNav"/>*@
 </div>
 
 @code
 {
-    private Dictionary<string, string> indexsNav = new Dictionary<string, string>() 
+    private IEnumerable<NewsPost> news = null;
+
+    protected override async Task OnInitializedAsync()
     {
-        { "top", "Вверх" },
-        { "work", "Работа" },
-        { "news", "Новости" }
-    };
+        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"))
+            .OrderByDescending(n => n.Time)
+            .Take(3);
+    }
 }

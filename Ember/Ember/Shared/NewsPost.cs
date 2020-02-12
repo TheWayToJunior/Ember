@@ -6,10 +6,7 @@ namespace Ember.Shared
 {
     public class NewsPost
     {
-        public int Id 
-        { 
-            get => throw new NotImplementedException();
-        }
+        public int Id { get; set; }
 
         public string  Title { get; set; }
 

@@ -11,14 +11,6 @@
     return true;
 }
 
-//$(document).ready(function () {
-//    $('.multiple-items').slick({
-//        infinite: true,
-//        slidesToShow: 3,
-//        slidesToScroll: 3
-//    });
-//});
-
 $(window).scroll(function () {
     if ($(this).scrollTop() > $("div.intro").height() - 50) {
         $('#header').addClass('header-background');

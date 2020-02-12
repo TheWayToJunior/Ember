@@ -1,5 +1,7 @@
 ﻿@page "/news"
 
+@inject HttpClient HttpClient
+
 <section>
     <div class="container-fluid" data-aos="">
         <div class="container">
@@ -29,118 +31,33 @@
                 </ul>
             </div>
 
-            <div class="row">
-                @foreach (var item in posts)
-                {
-                    <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
-                        <span>
-                            @item.Description
-                        </span>
-                    </NewsCard>
-                }
-            </div>
+            @if (news == null)
+            {
+                <h5>Looding...</h5>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var item in news)
+                    {
+                        <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
+                            <span>
+                                @item.Description
+                            </span>
+                        </NewsCard>
+                    }
+                </div>
+            }
         </div>
     </div>
 </section>
 
-@code {
-    void foo() { }
+@code 
+{
+    private IEnumerable<NewsPost> news = null;
 
-    NewsPost[] posts =
+    protected override async Task OnInitializedAsync()
     {
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-9.userapi.com/c850128/v850128254/1d36a9/B54sYaowd5E.jpg",
-
-            Title= "Об итогах ремонтного периода.",
-
-            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были" +
-                           " разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний"
-
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-28.userapi.com/c204516/v204516299/3b411/0qjhwQo15mw.jpg",
-
-            Title= "Внимание произвадятся работы!!!",
-
-            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были"+
-                        "разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний"+
-                        "период 2019-2020 годов, выполнение которых обеспечит гарантированный пуск и бесперебойную"
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-26.userapi.com/c206624/v206624328/1cfc1/QhLJ8tTkLC8.jpg",
-
-            Title= "Инвестиционная программа 2019 года",
-
-            Description = "В рамках инвестиционной программы 2019 года СПП \"Уголек\" ГП \"Донбасстеплоэнерго\""+
-                        " выполнило ряд мероприятий по ремонту котельных. Котельная N 3 - замена котлов, монтаж"+
-                        " системы водоочистки, установка дымовой трубы."
-
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-11.userapi.com/c857016/v857016695/75e15/jvemse0yWlE.jpg",
-
-            Title= "Об итогах ремонтного периода.",
-
-            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были" +
-                           " разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний" +
-                           " период 2019-2020 годов, выполнение которых обеспечит гарантированный пуск и бесперебойную"
-
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-60.userapi.com/c850636/v850636790/1ff3b2/R0pcwT1oVsw.jpg",
-
-            Title= "Внимание произвадятся работы!!!",
-
-            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были"+
-                        "разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний"+
-                        "период 2019-2020 годов, выполнение которых обеспечит гарантированный пуск и бесперебойную"
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-28.userapi.com/c854224/v854224084/12aa7f/aJlUY851MCw.jpg",
-
-            Title= "Инвестиционная программа 2019 года",
-
-            Description = "В рамках инвестиционной программы 2019 года СПП \"Уголек\" ГП \"Донбасстеплоэнерго\""+
-                        " выполнило ряд мероприятий по ремонту котельных. Котельная N 3 - замена котлов, монтаж"+
-                        " системы водоочистки, установка дымовой трубы."
-
-        },
-
-        new NewsPost
-        {
-            Time = DateTime.Now,
-
-            ImageSrc="https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
-
-            Title= "Об итогах ремонтного периода.",
-
-            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были" +
-                           " разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний" +
-                           " период 2019-2020 годов, выполнение которых обеспечит гарантированный пуск и бесперебойную"
-
-        },
-    };
+        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"));
+    }
 }
