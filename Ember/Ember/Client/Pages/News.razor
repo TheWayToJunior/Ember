@@ -3,7 +3,7 @@
 @inject HttpClient HttpClient
 
 <section>
-    <div class="container-fluid" data-aos="">
+    <div class="container-fluid">
         <div class="container">
 
             <div class="news-category">
@@ -15,7 +15,7 @@
                     </li>
                     <li>
                         <NavLink href="#">
-                            <span>Мироприятия</span>
+                            <span>События</span>
                         </NavLink>
                     </li>
                     <li>
@@ -37,16 +37,23 @@
             }
             else
             {
-                <div class="row">
-                    @foreach (var item in news)
-                    {
-                        <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
-                            <span>
-                                @item.Description
-                            </span>
-                        </NewsCard>
-                    }
-                </div>
+                @foreach (var item in news)
+                {
+                    <div class="blog-post">
+                        <div class="blog-post__img">
+                            <img src="@item.ImageSrc"/>
+                        </div>
+                        <div class="blog-post__info">
+                            <div class="blog-post__date">
+                                <span>@item.Time.Date.DayOfWeek</span>
+                                <span>@item.Time.ToLongDateString()</span>
+                            </div>
+                            <h1 class="blog-post__title">@item.Title</h1>
+                            <p class="blog-post__text">@item.Description</p>
+                            <a class="blog-post__cta" href="#">Подробнее</a>
+                        </div>
+                    </div>
+                }
             }
         </div>
     </div>
@@ -58,6 +65,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"));
+        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"))
+            .OrderByDescending(n => n.Time);
     }
 }

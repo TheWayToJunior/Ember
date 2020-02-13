@@ -5,12 +5,20 @@
 <div class="content">
     <div class="main-content">
         <div class="work-block" id="work">
-            <h2>Рабочий процесс</h2>
+            <h2 class="title">Main Title</h2>
         </div>
-
+        <hr>
         <div class="news-block" id="news">
-            <h2>Новости</h2>
             <div class="container">
+                <div class="news-block-text">
+                    <h2 class="title">Новости</h2>
+                    <a class="linck" href="news">
+                        Смотреть все
+                        <i class="material-icons">
+                            keyboard_arrow_right
+                        </i>
+                    </a>
+                </div>
 
                 @if (news == null)
                 {
