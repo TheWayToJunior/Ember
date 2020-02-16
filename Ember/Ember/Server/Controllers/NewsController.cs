@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ember.Server.Helpers;
 using Ember.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ember.Server.Controllers
 {
@@ -20,8 +22,21 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<NewsPost>> GetAll() => 
-            Ok(NewsServece.GetAllNews());
+        public ActionResult<IEnumerable<NewsPost>> GetAll([FromQuery] PaginationDTO pagination, string category = null)
+        {
+            if (pagination == null)
+            {
+                throw new ArgumentNullException(nameof(pagination));
+            }
+
+            HttpContext.InsertPaginationsPerPage(NewsServece.GetAllNews(), pagination.QuantityPerPage);
+
+            IEnumerable<NewsPost> posts = string.IsNullOrEmpty(category) ? NewsServece.GetAllNews() : NewsServece.GetAllNews()
+                 .Where(news => news.Category == category);
+
+            return Ok(posts.Pagination(pagination)
+                 .ToList());
+        }
 
         [HttpGet("{id}")]
         public ActionResult<NewsPost> Get(int id)

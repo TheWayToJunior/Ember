@@ -3,6 +3,7 @@ using Ember.Server.Controllers;
 using Ember.Shared;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Ember.XUnitTest
@@ -22,7 +23,7 @@ namespace Ember.XUnitTest
         public void GetAll_ReturnsOkResult()
         {
             // Act
-            var okResult = contriller.GetAll();
+            var okResult = contriller.GetAll(new PaginationDTO());
 
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
@@ -31,13 +32,29 @@ namespace Ember.XUnitTest
         [Fact]
         public void GetAll_ReturnsAllItems()
         {
+            var pagination = new PaginationDTO();
+
             // Act
-            var okResult = contriller.GetAll().Result as OkObjectResult;
+            var okResult = contriller.GetAll(pagination).Result as OkObjectResult;
 
             // Assert
             var items = Assert.IsType<List<NewsPost>>(okResult.Value);
 
-            Assert.Equal(7, items.Count);
+            Assert.Equal(pagination.QuantityPerPage, items.Count);
+        }
+
+        [Fact]
+        public void GetAll_ReturnsAllItemsByCategory()
+        {
+            int countItemsByCategory = 2;
+
+            // Act
+            var okResult = contriller.GetAll(new PaginationDTO(), "Ремонт").Result as OkObjectResult;
+
+            // Assert
+            var items = Assert.IsType<List<NewsPost>>(okResult.Value);
+
+            Assert.Equal(countItemsByCategory, items.Count);
         }
 
         [Fact]

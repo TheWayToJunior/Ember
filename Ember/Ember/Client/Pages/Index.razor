@@ -1,55 +1,198 @@
 ﻿@page "/"
 
+@using System.Text.Json
+
+@inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
-<div class="content">
-    <div class="main-content">
-        <div class="work-block" id="work">
-            <h2 class="title">Main Title</h2>
-        </div>
-        <hr>
-        <div class="news-block" id="news">
-            <div class="container">
-                <div class="news-block-text">
-                    <h2 class="title">Новости</h2>
-                    <a class="linck" href="news">
-                        Смотреть все
-                        <i class="material-icons">
-                            keyboard_arrow_right
-                        </i>
-                    </a>
-                </div>
+    <div class="content">
+        <div class="main-content">
+            <div class="col-12 text-center text-block">
+                <h1>Получайте квитанции Online</h1>
+                <p class="lead">
+                    Наш сервис позволит вам получить информацию о состоянии вашего лицевого счета не выходя из дома
+                </p>
+                <a class="btn btn-linck" href="#">
+                    Создать аккаунт
+                </a>
+            </div>
 
-                @if (news == null)
-                {
-                    <h5>Looding...</h5>
-                }
-                else
-                {
-                    <div class="row">
-                        @foreach (var item in news)
-                        {
-                            <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
-                                <span>
-                                    @item.Description
-                                </span>
-                            </NewsCard>
-                        }
+            <div class="features-block offset">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        rotate_right
+                                    </i>
+                                    <h3>Custom animation</h3>
+                                    <p>
+                                        Bootstrap 4 Theme from scratch in under 1 
+                                        hour In this video tutorial we'll create 
+                                        Learn Boodstrap by creatint
+                                        In this video tutorial
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        headset_mic
+                                    </i>
+                                    <h3>Custom animation</h3>
+                                    <p>
+                                        Bootstrap 4 Theme from scratch in under 1 
+                                        hour In this video tutorial we'll create 
+                                        Learn Boodstrap by creatint
+                                        In this video tutorial
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        list_alt
+                                    </i>
+                                    <h3>Custom animation</h3>
+                                    <p>
+                                        Bootstrap 4 Theme from scratch in under 1 
+                                        hour In this video tutorial we'll create 
+                                        Learn Boodstrap by creatint
+                                        In this video tutorial
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                }
+                </div>
+            </div>
+
+            <div class="work-block" id="work">
+                <div class="center">
+                    @foreach (var slide in slides)
+                    {
+                        <div style="background: #eee; height: 300px">
+                            <img src="https://de.com.ua/uploads/thumb/0/home_energyslide/@slide" />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="stat-block">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        person
+                                    </i>
+                                    <h2><span class="counter text-center">1591</span><span>+</span></h2>
+                                    <p>СОТРУДНИКИ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        apartment
+                                    </i>
+                                    <h2><span class="counter text-center">118</span><span>+</span></h2>
+                                    <p>КОТЕЛЬНЫЕ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        fireplace
+                                    </i>
+                                    <h2><span class="counter text-center">424</span><span>+</span></h2>
+                                    <p>КОТЛЫ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        sports
+                                    </i>
+                                    <h2><span class="counter text-center">663</span><span>+</span></h2>
+                                    <p>НАСОСЫ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-block" id="news">
+                <div class="container">
+                    <div class="news-block-text">
+                        <h2 class="title">Новости</h2>
+                        <a class="linck" href="news">
+                            Смотреть все
+                            <i class="material-icons">
+                                keyboard_arrow_right
+                            </i>
+                        </a>
+                    </div>
+
+                    @if (news == null)
+                    {
+                        <div class="spinner-border text-info" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            @foreach (var item in news)
+                            {
+                                <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
+                                    <span>
+                                        @item.Description
+                                    </span>
+                                </NewsCard>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 text-center text-block">
+                <h1>Получайте квитанции Online</h1>
+                <p class="lead">
+                    Наш сервис позволит вам получить информацию о состоянии вашего лицевого счета не выходя из дома
+                </p>
+                <a class="btn btn-linck" href="#">
+                    Личный кабинет
+                </a>
             </div>
         </div>
     </div>
-</div>
 
 @code
 {
+    string[] slides =
+    {
+        "123-E54J1357.jpg", "116-E54J3014.jpg", "117-E54J2966.jpg",
+        "1529-E54J2849.jpg", "124-E54J5341.jpg"
+    };
+
     private IEnumerable<NewsPost> news = null;
+
+    int quantityPerPage = 3;
 
     protected override async Task OnInitializedAsync()
     {
-        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"))
-            .OrderByDescending(n => n.Time)
-            .Take(3);
+        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>($"api/News?quantityPerPage={quantityPerPage}"))
+            .OrderByDescending(n => n.Time);
+
+        await JsRuntime.IndexInit();
     }
 }

@@ -12,5 +12,10 @@ namespace Ember.Client.Helpers
         {
             return JSRuntime.InvokeAsync<bool>("scrollToElementId", elementId);
         }
+
+        public static async Task IndexInit(this IJSRuntime JSRuntime)
+        {
+            await JSRuntime.InvokeVoidAsync("indexInit");
+        }
     }
 }

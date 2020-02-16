@@ -5,7 +5,14 @@
     <div class="banner" style=" background-image: url('@ImgSource')">
         <div class="banner-content">
             @ChildContent
-
+            <div class="banner-buttom">
+                <a class="btn btn-solid" href="#">
+                    <i class="material-icons icon">
+                        supervisor_account
+                    </i>
+                    Личный кабинет
+                </a>
+            </div>
             <div class="scroll-indicator" @onclick="() => JSRuntime.ScrollToElementId(BodyId)">
                 <span></span>
                 <span></span>

@@ -1,5 +1,7 @@
 ﻿@page "/news"
 
+@using System.Text.Json
+
 @inject HttpClient HttpClient
 
 <section>
@@ -33,7 +35,9 @@
 
             @if (news == null)
             {
-                <h5>Looding...</h5>
+                <div class="spinner-border text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
             }
             else
             {
@@ -41,7 +45,7 @@
                 {
                     <div class="blog-post">
                         <div class="blog-post__img">
-                            <img src="@item.ImageSrc"/>
+                            <img src="@item.ImageSrc" />
                         </div>
                         <div class="blog-post__info">
                             <div class="blog-post__date">
@@ -59,13 +63,31 @@
     </div>
 </section>
 
-@code 
+<Pagination />
+
+@code
 {
     private IEnumerable<NewsPost> news = null;
 
+    int pageQuantity;
+    int quantityPerPage = 7;
+
     protected override async Task OnInitializedAsync()
     {
-        news = (await HttpClient.GetJsonAsync<IEnumerable<NewsPost>>("api/News"))
-            .OrderByDescending(n => n.Time);
+        var httpResponse = await HttpClient.GetAsync($"api/News?quantityPerPage={quantityPerPage}"); ///!
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            pageQuantity = Convert.ToInt32(httpResponse.Headers.GetValues("pageQuantity").FirstOrDefault());
+
+            var responsString = await httpResponse.Content.ReadAsStringAsync();
+
+            news = JsonSerializer.Deserialize<List<NewsPost>>(responsString,
+                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+        else
+        {
+            Console.WriteLine(httpResponse.StatusCode);
+        }
     }
 }

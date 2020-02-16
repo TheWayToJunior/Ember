@@ -4,41 +4,29 @@
 
 <div class="main">
 
-    @if ((Body.Target as Microsoft.AspNetCore.Components.RouteView)
+    @if ((Body.Target as RouteView)
       .RouteData.PageType.Name == "Index")
     {
         <Intro BodyId="@indexs[0]" ImgSource="/img/banner-index.jpg">
             <div class="banner-text">
                 <h2>СПП Уголек <br> ГП <span>Донбасстепло<span>энерго</span></span></h2>
                 <p>
-                    бренд с почти вековой историей. Сегодня это —
-                    энергогенерирующая компания, в основе философии
-                    которой лежит успешная интеграция инновационных
-                    решений в традиционное производство.
+                    предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+                    для обеспечения комфортных условий труда и проживания граждан.
                 </p>
-            </div>
-            <div class="banner-buttom">
-                <a class="btn-linck" href="#">
-                    <i class="material-icons icon">
-                        supervisor_account
-                    </i>
-                    Личный кабинет
-                </a>
             </div>
         </Intro>
     }
 
-    @if ((Body.Target as Microsoft.AspNetCore.Components.RouteView)
+    @if ((Body.Target as RouteView)
        .RouteData.PageType.Name == "News")
     {
         <Intro BodyId="@indexs[0]" ImgSource="/img/banner-news.jpg">
             <div class="banner-text">
                 <h2>Новости</h2>
                 <p>
-                    бренд с почти вековой историей. Сегодня это —
-                    энергогенерирующая компания, в основе философии
-                    которой лежит успешная интеграция инновационных
-                    решений в традиционное производство.
+                    предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+                    для обеспечения комфортных условий труда и проживания граждан.
                 </p>
             </div>
         </Intro>
@@ -51,9 +39,8 @@
     <div class="body" id="top">
         @Body
     </div>
-    <hr />
-    <footer>
-    </footer>
+
+    <Footer/>
 </div>
 
 @code

@@ -29,7 +29,9 @@ namespace Ember.Server.Services
 
                     Title= "Об итогах ремонтного периода.",
 
-                    Description = descriotion
+                    Description = descriotion,
+
+                    Category = "Ремонт"
 
                 },
 
@@ -43,7 +45,9 @@ namespace Ember.Server.Services
 
                     Title= "Внимание произвадятся работы!!!",
 
-                    Description = descriotion + descriotion
+                    Description = descriotion + descriotion,
+
+                    Category = "Ремонт"
                 },
 
                 new NewsPost
@@ -52,11 +56,13 @@ namespace Ember.Server.Services
 
                     Time = DateTime.Now,
 
-                    ImageSrc="https://sun9-26.userapi.com/c206624/v206624328/1cfc1/QhLJ8tTkLC8.jpg",
+                    ImageSrc="https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
 
                     Title= "Инвестиционная программа 2019 года",
 
-                     Description = descriotion
+                     Description = descriotion,
+
+                     Category = "Экология"
 
                 },
 
@@ -70,7 +76,9 @@ namespace Ember.Server.Services
 
                     Title= "Об итогах ремонтного периода.",
 
-                    Description = descriotion
+                    Description = descriotion,
+
+                    Category = "Мероприятия"
                 },
 
                 new NewsPost
@@ -83,7 +91,9 @@ namespace Ember.Server.Services
 
                     Title= "Внимание произвадятся работы!!!",
 
-                     Description = descriotion
+                     Description = descriotion,
+
+                    Category = "Мероприятия"
                 },
 
                 new NewsPost
@@ -96,7 +106,9 @@ namespace Ember.Server.Services
 
                     Title= "Инвестиционная программа 2019 года",
 
-                     Description = descriotion
+                     Description = descriotion,
+
+                     Category = "Мероприятия"
                 },
 
                 new NewsPost
@@ -105,11 +117,13 @@ namespace Ember.Server.Services
 
                     Time = DateTime.Now,
 
-                    ImageSrc="https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
+                    ImageSrc="https://sun9-26.userapi.com/c206624/v206624328/1cfc1/QhLJ8tTkLC8.jpg",
 
                     Title= "Об итогах ремонтного периода.",
 
-                     Description = descriotion
+                     Description = descriotion,
+
+                    Category = "Мероприятия"
                 },
             };
 

@@ -15,5 +15,7 @@ namespace Ember.Shared
         public string ImageSrc { get; set; }
 
         public DateTime Time { get; set; }
+
+        public string Category { get; set; }
     }
 }

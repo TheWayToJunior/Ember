@@ -68,7 +68,6 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Ap
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Index.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\_Imports.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Ember.Client.AssemblyInfoInputs.cache
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Ember.Client.AssemblyInfo.cs
@@ -78,7 +77,6 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Ember.Client.dll
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Ember.Client.pdb
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\blazor\linker.descriptor.xml
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\blazor\blazor.boot.json
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\ScrollPanel.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\News.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\NewsCard.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Intro.razor.g.cs
@@ -95,6 +93,6 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Intro.
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\MainLayout.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\NavMenu.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\NewsCard.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\ScrollPanel.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\SurveyPrompt.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\_Imports.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Footer.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Footer.razor.g.cs
