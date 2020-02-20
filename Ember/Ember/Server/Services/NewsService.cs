@@ -31,7 +31,7 @@ namespace Ember.Server.Services
 
                     Description = descriotion,
 
-                    Category = "Ремонт"
+                    Category = CategoryMode.Repair
 
                 },
 
@@ -47,7 +47,7 @@ namespace Ember.Server.Services
 
                     Description = descriotion + descriotion,
 
-                    Category = "Ремонт"
+                    Category =  CategoryMode.Repair
                 },
 
                 new NewsPost
@@ -62,7 +62,7 @@ namespace Ember.Server.Services
 
                      Description = descriotion,
 
-                     Category = "Экология"
+                     Category =  CategoryMode.Ecology
 
                 },
 
@@ -78,7 +78,7 @@ namespace Ember.Server.Services
 
                     Description = descriotion,
 
-                    Category = "Мероприятия"
+                    Category = CategoryMode.Events
                 },
 
                 new NewsPost
@@ -93,7 +93,7 @@ namespace Ember.Server.Services
 
                      Description = descriotion,
 
-                    Category = "Мероприятия"
+                    Category = CategoryMode.Events
                 },
 
                 new NewsPost
@@ -108,7 +108,7 @@ namespace Ember.Server.Services
 
                      Description = descriotion,
 
-                     Category = "Мероприятия"
+                     Category = CategoryMode.Ecology
                 },
 
                 new NewsPost
@@ -123,7 +123,7 @@ namespace Ember.Server.Services
 
                      Description = descriotion,
 
-                    Category = "Мероприятия"
+                    Category = CategoryMode.Events
                 },
             };
 

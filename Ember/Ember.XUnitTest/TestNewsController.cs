@@ -49,7 +49,7 @@ namespace Ember.XUnitTest
             int countItemsByCategory = 2;
 
             // Act
-            var okResult = contriller.GetAll(new PaginationDTO(), "Ремонт").Result as OkObjectResult;
+            var okResult = contriller.GetAll(new PaginationDTO(), CategoryMode.Repair).Result as OkObjectResult;
 
             // Assert
             var items = Assert.IsType<List<NewsPost>>(okResult.Value);

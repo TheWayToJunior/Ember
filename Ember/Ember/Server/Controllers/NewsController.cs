@@ -22,17 +22,17 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<NewsPost>> GetAll([FromQuery] PaginationDTO pagination, string category = null)
+        public ActionResult<IEnumerable<NewsPost>> GetAll([FromQuery] PaginationDTO pagination, CategoryMode category = CategoryMode.All)
         {
             if (pagination == null)
             {
                 throw new ArgumentNullException(nameof(pagination));
             }
-
+            
             HttpContext.InsertPaginationsPerPage(NewsServece.GetAllNews(), pagination.QuantityPerPage);
 
-            IEnumerable<NewsPost> posts = string.IsNullOrEmpty(category) ? NewsServece.GetAllNews() : NewsServece.GetAllNews()
-                 .Where(news => news.Category == category);
+            IEnumerable<NewsPost> posts = category == CategoryMode.All ? NewsServece.GetAllNews().OrderByDescending(news => news.Id)
+                : NewsServece.GetAllNews().OrderByDescending(news => news.Id).Where(news => news.Category == category);
 
             return Ok(posts.Pagination(pagination)
                  .ToList());

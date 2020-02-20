@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a:not([href]):not([tabindex]) {
     cursor: pointer;
-    color: #fff;
+    color: #000;
 }
 
 a:hover {
@@ -406,7 +406,7 @@ nav ul li a:hover::after {
     position: absolute;
     bottom: -16px;
     left: 0;
-    width: 100%;
+    width: 100% !important;
     height: 2.5px;
     background: #2196f3;
 }
@@ -547,20 +547,27 @@ nav ul li a:hover::after {
         }
 
             .filter-ul li a::after {
+                content: '';
+                position: absolute;
                 bottom: -4px;
                 height: 2.5px;
+                left: 0;
+                width: 0%;
+                background: #2196f3;
+                transition: 0.5s;
+            }
+
+            .filter-ul li a:hover::after {
+                width: 100%
             }
 
             .filter-ul li a.active {
                 color: #2196f3;
             }
 
-                .filter-ul li a.active::after {
-                    content: '';
-                    bottom: -4px;
-                    height: 2.5px;
-                    color: #2196f3;
-                }
+            .filter-ul li a.active:hover {
+                color: #2196f3;
+            }
 
 /*News Card*/
 .news-container section {

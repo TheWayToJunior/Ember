@@ -9,28 +9,7 @@
         <div class="container">
 
             <div class="news-category">
-                <ul class="filter-ul">
-                    <li>
-                        <NavLink href="news" Match="NavLinkMatch.All">
-                            <span>Все</span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink href="#">
-                            <span>События</span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink href="#">
-                            <span>Ремонт</span>
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink href="#">
-                            <span>Экология</span>
-                        </NavLink>
-                    </li>
-                </ul>
+                <Category CurrentCategory="currentCategory" Lincks="Lincks" SelectedLinck="SelectedLinck"/>
             </div>
 
             @if (news == null)
@@ -63,18 +42,40 @@
     </div>
 </section>
 
-<Pagination />
-
 @code
 {
     private IEnumerable<NewsPost> news = null;
+
+    private IEnumerable<(string, CategoryMode)> Lincks = new []
+    {
+        ("Все", CategoryMode.All),
+        ("События", CategoryMode.Events),
+        ("Ремонт", CategoryMode.Repair),
+        ("Экология", CategoryMode.Ecology)
+    };
+
+    int currentPage = 1;
+    CategoryMode currentCategory = CategoryMode.All;
 
     int pageQuantity;
     int quantityPerPage = 7;
 
     protected override async Task OnInitializedAsync()
     {
-        var httpResponse = await HttpClient.GetAsync($"api/News?quantityPerPage={quantityPerPage}"); ///!
+        await GetNews();
+    }
+
+    private async Task SelectedLinck(CategoryMode category)
+    {
+        currentCategory = category;
+
+        await GetNews();
+    }
+
+    private async Task GetNews()
+    {
+        var httpResponse = await HttpClient
+            .GetAsync($"api/News?page={currentPage}&quantityPerPage={quantityPerPage}&category={currentCategory}");
 
         if (httpResponse.IsSuccessStatusCode)
         {
@@ -84,6 +85,8 @@
 
             news = JsonSerializer.Deserialize<List<NewsPost>>(responsString,
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            Console.WriteLine(pageQuantity);
         }
         else
         {

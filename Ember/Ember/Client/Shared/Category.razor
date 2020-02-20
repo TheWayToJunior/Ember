@@ -1,0 +1,67 @@
+﻿<ul class="filter-ul">
+
+    @foreach (var link in links)
+	{
+        <li>
+            <a @onclick="async () => await SelectedLinckInternal(link)"
+               class="@(link.Active ? "active" : null)">
+                <span>@link.Text</span>
+            </a>
+        </li>	 
+	}
+</ul>
+
+@code {
+    [Parameter]
+    public CategoryMode CurrentCategory { get; set; }
+
+    [Parameter]
+    public IEnumerable<(string, CategoryMode)> Lincks { get; set; }
+
+    [Parameter]
+    public EventCallback<CategoryMode> SelectedLinck { get; set; }
+
+    List<LinkModel> links;
+
+    protected override void OnParametersSet()
+    {
+        LoadPages();
+    }
+
+    private async Task SelectedLinckInternal(LinkModel link)
+    {
+        if (link.Active)
+        {
+            return;
+        }
+
+        Console.WriteLine(link.Category);
+
+        await SelectedLinck.InvokeAsync(link.Category);
+    }
+
+    private void LoadPages()
+    {
+        links = new List<LinkModel>();
+
+        foreach (var linck in Lincks)
+        {
+            links.Add(new LinkModel(linck.Item1) { Category = linck.Item2,  Active = CurrentCategory == linck.Item2});
+        }
+    }
+
+    class LinkModel
+    {
+
+        public LinkModel(string text)
+        {
+            Text = text;
+        }
+
+        public string Text { get; set; }
+
+        public CategoryMode Category{ get; set; }
+
+        public bool Active { get; set; } = false;
+    }
+}
