@@ -853,7 +853,7 @@ footer {
     }
 
     footer img {
-        margin: 1.5rem 0;
+        margin-bottom: 1.5rem;
     }
 
     footer a {
@@ -866,7 +866,7 @@ footer {
 
         footer a i {
             font-size: 1.6rem !important;
-            margin: 1.2rem .5rem 0 0;
+            margin-right: .7rem;
         }
 
 hr.socket {

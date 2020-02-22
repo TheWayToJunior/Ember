@@ -2,6 +2,7 @@
 
 @using System.Text.Json
 
+@inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
 <section>
@@ -9,7 +10,7 @@
         <div class="container">
 
             <div class="news-category">
-                <Category CurrentCategory="currentCategory" Lincks="Lincks" SelectedLinck="SelectedLinck"/>
+                <Category CurrentCategory="currentCategory" Links="Links" SelectedLink="SelectedLink" />
             </div>
 
             @if (news == null)
@@ -40,13 +41,15 @@
             }
         </div>
     </div>
+
+    <Pagination CurrentPage="currentPage" PageQuantity="pageQuantity" Range="2" SelectedPage="SelectedPage" />
 </section>
 
 @code
 {
     private IEnumerable<NewsPost> news = null;
 
-    private IEnumerable<(string, CategoryMode)> Lincks = new []
+    private IEnumerable<(string, CategoryMode)> Links = new[]
     {
         ("Все", CategoryMode.All),
         ("События", CategoryMode.Events),
@@ -58,18 +61,27 @@
     CategoryMode currentCategory = CategoryMode.All;
 
     int pageQuantity;
-    int quantityPerPage = 7;
+    int quantityPerPage = 5;
 
     protected override async Task OnInitializedAsync()
     {
         await GetNews();
     }
 
-    private async Task SelectedLinck(CategoryMode category)
+    private async Task SelectedLink(CategoryMode category)
     {
+        currentPage = 1;
         currentCategory = category;
 
         await GetNews();
+    }
+
+    private async Task SelectedPage(int page)
+    {
+        currentPage = page;
+
+        await GetNews();
+        await JsRuntime.ScrollToElementId("top");
     }
 
     private async Task GetNews()
@@ -85,8 +97,6 @@
 
             news = JsonSerializer.Deserialize<List<NewsPost>>(responsString,
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-            Console.WriteLine(pageQuantity);
         }
         else
         {

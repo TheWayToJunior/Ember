@@ -28,11 +28,11 @@ namespace Ember.Server.Controllers
             {
                 throw new ArgumentNullException(nameof(pagination));
             }
-            
-            HttpContext.InsertPaginationsPerPage(NewsServece.GetAllNews(), pagination.QuantityPerPage);
 
             IEnumerable<NewsPost> posts = category == CategoryMode.All ? NewsServece.GetAllNews().OrderByDescending(news => news.Id)
                 : NewsServece.GetAllNews().OrderByDescending(news => news.Id).Where(news => news.Category == category);
+
+            HttpContext.InsertPaginationsPerPage(posts, pagination.QuantityPerPage);
 
             return Ok(posts.Pagination(pagination)
                  .ToList());

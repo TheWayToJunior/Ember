@@ -98,3 +98,5 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Sh
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Footer.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Category.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Category.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Pagination.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Pagination.razor.g.cs

@@ -46,15 +46,16 @@ namespace Ember.XUnitTest
         [Fact]
         public void GetAll_ReturnsAllItemsByCategory()
         {
-            int countItemsByCategory = 2;
+            int countItemsByCategoryPerPage = 1;
 
             // Act
-            var okResult = contriller.GetAll(new PaginationDTO(), CategoryMode.Repair).Result as OkObjectResult;
+            var okResult = contriller.GetAll(new PaginationDTO() { QuantityPerPage = 1, Page = 2}, CategoryMode.Repair)
+                .Result as OkObjectResult;
 
             // Assert
             var items = Assert.IsType<List<NewsPost>>(okResult.Value);
 
-            Assert.Equal(countItemsByCategory, items.Count);
+            Assert.Equal(countItemsByCategoryPerPage, items.Count);
         }
 
         [Fact]
