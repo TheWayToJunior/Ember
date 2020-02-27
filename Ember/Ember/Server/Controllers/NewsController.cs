@@ -14,34 +14,37 @@ namespace Ember.Server.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
-        private readonly INewsService NewsServece;
+        private readonly INewsService newsServece;
 
         public NewsController(INewsService newsServece)
         {
-            NewsServece = newsServece ?? throw new ArgumentNullException(nameof(newsServece));
+            this.newsServece = newsServece ?? throw new ArgumentNullException(nameof(newsServece));
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<NewsPost>> GetAll([FromQuery] PaginationDTO pagination, CategoryMode category = CategoryMode.All)
+        public async Task<ActionResult<IEnumerable<NewsPost>>> GetAll([FromQuery] PaginationDTO pagination, 
+            CategoryMode category = CategoryMode.All)
         {
             if (pagination == null)
             {
                 throw new ArgumentNullException(nameof(pagination));
             }
 
-            IEnumerable<NewsPost> posts = category == CategoryMode.All ? NewsServece.GetAllNews().OrderByDescending(news => news.Id)
-                : NewsServece.GetAllNews().OrderByDescending(news => news.Id).Where(news => news.Category == category);
+            IQueryable<NewsPost> posts = category == CategoryMode.All ? newsServece.GetAll().OrderByDescending(news => news.Id)
+                : newsServece.GetAll().OrderByDescending(news => news.Id).Where(news => news.Category == category);
 
-            HttpContext.InsertPaginationsPerPage(posts, pagination.QuantityPerPage);
+            await HttpContext.InsertPaginationsPerPage(posts, pagination.QuantityPerPage)
+                .ConfigureAwait(true);
 
             return Ok(posts.Pagination(pagination)
                  .ToList());
         }
 
         [HttpGet("{id}")]
-        public ActionResult<NewsPost> Get(int id)
+        public async Task<ActionResult<NewsPost>> Get(int id)
         {
-            NewsPost newsPost = NewsServece.GetNewsById(id);
+            NewsPost newsPost = await newsServece.GetById(id)
+                .ConfigureAwait(true);
 
             if (newsPost == null)
             {
@@ -52,21 +55,24 @@ namespace Ember.Server.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] NewsPost value)
+        public async Task<ActionResult> Post([FromBody] NewsPost value)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            //plug
-            return NotFound();
+            var entityEntry = await newsServece.AddAsync(value)
+                .ConfigureAwait(true);
+
+            return CreatedAtAction("Get", new { Id = entityEntry.Id } , entityEntry);
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] NewsPost value)
+        public async Task<ActionResult> Put(int id, [FromBody] NewsPost value)
         {
-            NewsPost newsPost = NewsServece.GetNewsById(id);
+            NewsPost newsPost = await newsServece.GetById(id)
+               .ConfigureAwait(true);
 
             if (newsPost == null)
             {
@@ -75,7 +81,7 @@ namespace Ember.Server.Controllers
 
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
             //plug
@@ -83,9 +89,10 @@ namespace Ember.Server.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            NewsPost newsPost = NewsServece.GetNewsById(id);
+            NewsPost newsPost = await newsServece.GetById(id)
+                .ConfigureAwait(true);
 
             if (newsPost == null)
             {

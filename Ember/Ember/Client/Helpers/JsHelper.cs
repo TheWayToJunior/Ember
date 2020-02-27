@@ -17,5 +17,10 @@ namespace Ember.Client.Helpers
         {
             await JSRuntime.InvokeVoidAsync("indexInit");
         }
+
+        public static async Task InitMap(this IJSRuntime JSRuntime)
+        {
+            await JSRuntime.InvokeVoidAsync("initMap");
+        }
     }
 }

@@ -51,3 +51,15 @@ window.indexInit = function () {
         triggerOnce: true
     });
 };
+
+window.initMap = function () {
+    var map = new google.maps.Map(
+        document.getElementById('map'),{
+            zoom: 14, center: { lat: 48.30627, lng: 38.0077283 }
+    });
+
+    var marker = new google.maps.Marker({
+        position: { lat: 48.306820, lng: 38.028227 },
+        map: map
+    });
+}

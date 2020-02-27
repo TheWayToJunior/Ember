@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace Ember.Server
 {
+    /// <summary>
+    /// The repository interface
+    /// </summary>
     public interface INewsService
     {
-        IEnumerable<NewsPost> GetAllNews();
+        IQueryable<NewsPost> GetAll();
 
-        NewsPost GetNewsById(int id);
+        Task<NewsPost> GetById(int id);
+
+        Task<NewsPost> AddAsync(NewsPost post);
     }
 }

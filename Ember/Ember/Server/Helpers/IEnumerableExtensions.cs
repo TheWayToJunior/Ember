@@ -8,7 +8,7 @@ namespace Ember.Server.Helpers
 {
     public static class IEnumerableExtensions
     {
-        public static IEnumerable<T> Pagination<T>(this IEnumerable<T> enumerable, PaginationDTO pagination) 
+        public static IQueryable<T> Pagination<T>(this IQueryable<T> enumerable, PaginationDTO pagination) 
         {
             if (pagination == null)
             {

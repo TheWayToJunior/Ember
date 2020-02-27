@@ -5,9 +5,9 @@
 <div class="main">
 
     @if ((Body.Target as RouteView)
-      .RouteData.PageType.Name == "Index")
+  .RouteData.PageType.Name == "Index")
     {
-        <Intro BodyId="@indexs[0]" ImgSource="/img/banner-index.jpg">
+        <Intro BodyId="@("top")" ImgSource="/img/banner-index.jpg">
             <div class="banner-text">
                 <h2>СПП Уголек <br> ГП <span>Донбасстепло<span>энерго</span></span></h2>
                 <p>
@@ -19,9 +19,9 @@
     }
 
     @if ((Body.Target as RouteView)
-       .RouteData.PageType.Name == "News")
+  .RouteData.PageType.Name == "News")
     {
-        <Intro BodyId="@indexs[0]" ImgSource="/img/banner-news.jpg">
+        <Intro BodyId="@("top")" ImgSource="/img/banner-news.jpg">
             <div class="banner-text">
                 <h2>Новости</h2>
                 <p>
@@ -40,11 +40,21 @@
         @Body
     </div>
 
-    <Footer/>
+    <footor>
+        <div class="text-center">
+            <hr class="socket" />
+            <div class="container">
+                &copy; CПП Уголек @DateTime.Now.Year г.
+            </div>
+        </div>
+    </footor>
 </div>
 
 @code
-{
-    string[] indexs = { "top" };
+{ 
+    //protected override Task OnAfterRenderAsync(bool firstRender)
+    //{
+    //    return base.OnAfterRenderAsync(firstRender);
+    //}
 }
 

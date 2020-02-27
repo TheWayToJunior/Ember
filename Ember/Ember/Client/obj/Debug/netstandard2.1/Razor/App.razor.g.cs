@@ -73,7 +73,7 @@ using Ember.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 12 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using BlazorComponentUtilities;
 
 #line default
