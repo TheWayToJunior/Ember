@@ -35,5 +35,45 @@ namespace Ember.Server.Services
 
             return saved.Entity as NewsPost;
         }
+
+        public async Task UpdateAsync(NewsPost post) 
+        {
+            if (post == null)
+            {
+                throw new ArgumentNullException(nameof(post));
+            }
+
+            try
+            {
+                context.Entry(post).State = EntityState.Modified;
+
+                await context.SaveChangesAsync()
+                    .ConfigureAwait(true);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+
+                throw new DbUpdateConcurrencyException();
+            }
+        }
+
+        public async Task DeleteAsync(NewsPost post)
+        {
+            if (post == null)
+            {
+                throw new ArgumentNullException(nameof(post));
+            }
+
+            context.Remove(post);
+
+            await context.SaveChangesAsync()
+                .ConfigureAwait(true);
+        }
+
+        public async Task<bool> AnyAsync(int id)
+        {
+            return await context.Posts.AnyAsync(post => post.Id == id)
+                .ConfigureAwait(true);
+        }
     }
 }

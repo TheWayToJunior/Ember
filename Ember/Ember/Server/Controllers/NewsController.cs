@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ember.Server.Data;
 using Ember.Server.Helpers;
 using Ember.Shared;
 using Microsoft.AspNetCore.Http;
@@ -71,12 +72,9 @@ namespace Ember.Server.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(int id, [FromBody] NewsPost value)
         {
-            NewsPost newsPost = await newsServece.GetById(id)
-               .ConfigureAwait(true);
-
-            if (newsPost == null)
+            if (value == null || value.Id != id)
             {
-                return NotFound();
+                return BadRequest();
             }
 
             if (!ModelState.IsValid)
@@ -84,8 +82,27 @@ namespace Ember.Server.Controllers
                 return BadRequest(ModelState);
             }
 
-            //plug
-            return NotFound();
+            try
+            {
+                await newsServece.UpdateAsync(value)
+                    .ConfigureAwait(true);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                bool newsPostExists = await newsServece.AnyAsync(id)
+                    .ConfigureAwait(true);
+
+                if (!newsPostExists)
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -99,8 +116,10 @@ namespace Ember.Server.Controllers
                 return NotFound();
             }
 
-            //plug
-            return NotFound();
+            await newsServece.DeleteAsync(newsPost)
+                .ConfigureAwait(true);
+
+            return NoContent();
         }
     }
 }

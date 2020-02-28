@@ -16,5 +16,11 @@ namespace Ember.Server
         Task<NewsPost> GetById(int id);
 
         Task<NewsPost> AddAsync(NewsPost post);
+
+        Task UpdateAsync(NewsPost post);
+
+        Task DeleteAsync(NewsPost post);
+
+        Task<bool> AnyAsync(int id);
     }
 }
