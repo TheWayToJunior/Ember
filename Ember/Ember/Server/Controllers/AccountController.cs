@@ -50,7 +50,7 @@ namespace Ember.Server.Controllers
 
             if (result.Succeeded)
             {
-                return BildToken(userInfo);
+                return BuildToken(userInfo);
             }
             else
             {
@@ -81,7 +81,7 @@ namespace Ember.Server.Controllers
 
             if (result.Succeeded)
             {
-                return BildToken(userInfo);
+                return BuildToken(userInfo);
             }
             else
             {
@@ -90,7 +90,7 @@ namespace Ember.Server.Controllers
             }
         }
 
-        private UserToken BildToken(UserInfo userInfo)
+        private UserToken BuildToken(UserInfo userInfo)
         {
             var claims = new[]
             {
