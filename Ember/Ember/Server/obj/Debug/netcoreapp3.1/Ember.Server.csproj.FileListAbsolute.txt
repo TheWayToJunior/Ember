@@ -159,4 +159,11 @@ D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\runtimes\win-arm\nat
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\e_sqlite3.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\e_sqlite3.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.MvcApplicationPartsAssemblyInfo.cache

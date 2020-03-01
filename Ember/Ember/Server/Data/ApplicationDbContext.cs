@@ -56,8 +56,8 @@ namespace Ember.Server.Data
                             Time = DateTime.Now,
                             ImageSrc="https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
                             Title= "Инвестиционная программа 2019 года",
-                             Description = descriotion,
-                             Category =  CategoryMode.Ecology
+                            Description = descriotion,
+                            Category =  CategoryMode.Ecology
                         },
 
                         new NewsPost

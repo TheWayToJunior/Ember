@@ -125,6 +125,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.2, )"
+            },
             "Microsoft.AspNetCore.Blazor.Server": {
               "target": "Package",
               "version": "[3.1.0-preview4.19579.2, )"
