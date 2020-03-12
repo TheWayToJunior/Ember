@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+@inject IJSRuntime JSRuntime
+@inject IModalService Modal
+@inject ILoginService  loginService
+
+<div class="intro">
+    <div class="filter"></div>
+    <div class="banner" style=" background-image: url('@ImgSource')">
+        <div class="banner-content">
+            @ChildContent
+            <AuthorizeView>
+                <Authorized>
+                    <div class="banner-buttom">
+                        <a class="btn btn-solid waves-effect" href="account">
+                            <i class="material-icons icon">
+                                supervisor_account
+                            </i>
+                            Личный кабинет
+                        </a>
+                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <div class="banner-buttom">
+                        <a class="btn btn-solid waves-effect" href="javascript: void(0)" @onclick="@(() => Modal.Show<Auth.Login>("Login"))">
+                            <i class="material-icons icon">
+                                supervisor_account
+                            </i>
+                            Личный кабинет
+                        </a>
+                    </div>
+                </NotAuthorized>
+            </AuthorizeView>
+            <div class="scroll-indicator" @onclick="() => JSRuntime.ScrollToElementId(BodyId)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string BodyId { get; set; }
+
+    [Parameter]
+    public string ImgSource { get; set; }
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}

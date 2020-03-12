@@ -11,8 +11,11 @@
 
     <link rel="SHORTCUT ICON" href="img/fire1.png" />
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"/>
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/mdb.min.css" rel="stylesheet" />
 
+    <link href="css/blazored-modal.css" rel="stylesheet" />
     <link href="css/site.css" rel="stylesheet" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,7 +26,13 @@
 </head>
 
 <body>
-    <app>Loading...</app>
+    <app>
+        <div class="loader text-center">
+            <div class="spinner-border text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </app>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.
@@ -32,6 +41,10 @@
     </div>
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mdb.min.js"></script>
+
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <script src="js/jquery.waypoints.min.js"></script>

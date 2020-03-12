@@ -3,6 +3,7 @@
     padding: 0;
     font-family: 'Open Sans', sans-serif;
     min-width: 765px;
+    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -98,7 +99,7 @@ a:hover {
         bottom: -3px;
         left: 0;
         width: 0%;
-        height: 2px;
+        height: 2.5px;
         background: #2196f3;
         transition: 0.5s;
     }
@@ -335,7 +336,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 100;
+    z-index: 10;
 }
 
     header a:hover {
@@ -448,6 +449,8 @@ nav ul li a:hover::after {
 .jumbotron {
     padding: 5rem 1rem;
     margin-bottom: 0;
+    background-color: #e9ecef;
+    box-shadow: none;
 }
 
 .work-block {
@@ -858,6 +861,7 @@ footer a i {
     position: relative;
 }
 
+
 .contact-block_container {
     position: absolute;
     height: 100%;
@@ -906,6 +910,8 @@ footer a i {
 .contact-block_button a{
     display: flex;
     align-items: center;
+    box-shadow: none !important;
+    margin: 0 !important;
 }
     .contact-block_button a i{
         font-size: 14px !important;
@@ -954,4 +960,38 @@ hr.socket {
     width: 100%;
     border-top: 1px solid #282828;
     margin-top: 0;
+}
+
+/*Loader*/
+
+.loader {
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    z-index: 100;
+}
+
+/*Valid*/
+
+.form-control.invalid {
+    border-color: #dc3545;
+}
+
+.form-control.valid {
+    border-color: #28a745;
+}
+
+.validation-message {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}
+
+.alert-danger p{
+    margin: 0;
 }

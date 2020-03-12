@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Ember.Server.Data;
 using Ember.Server.Helpers;
 using Ember.Shared;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

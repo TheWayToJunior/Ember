@@ -1,183 +1,199 @@
 ﻿@page "/"
-
+@layout MainLayout
 @inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
-<div class="content">
-    <div class="main-content">
-        <div class="col-12 text-center text-block">
-            <h1>Получайте квитанции Online</h1>
-            <p class="lead">
-                Наш сервис позволит вам получить информацию о состоянии вашего лицевого счета не выходя из дома
-            </p>
-            <a class="btn btn-linck" href="#">
-                Создать аккаунт
-            </a>
-        </div>
+<Intro BodyId="@("body")" ImgSource="/img/banner-index.jpg">
+    <div class="banner-text">
+        <h2>СПП Уголек <br> ГП <span>Донбасстепло<span>энерго</span></span></h2>
+        <p>
+            предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+            для обеспечения комфортных условий труда и проживания граждан.
+        </p>
+    </div>
+</Intro>
 
-        <div class="features-block offset">
-            <div class="jumbotron">
+<header id="header">
+    <NavMenu Image="/img/Logo.png" CssClassImage="logo-img" />
+</header>
+
+<div class="body" id="body">
+    <div class="content">
+        <div class="main-content">
+            <div class="col-12 text-center text-block">
+                <h1>Получайте квитанции Online</h1>
+                <p class="lead">
+                    Наш сервис позволит вам получить информацию о состоянии вашего лицевого счета не выходя из дома
+                </p>
+                <a class="btn btn-linck waves-effect" href="#">
+                    Создать аккаунт
+                </a>
+            </div>
+
+            <div class="features-block offset">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        fireplace
+                                    </i>
+                                    <h3>Теплоснабжение</h3>
+                                    <p>
+                                        производство, транспортирование и распределение
+                                        тепловой энергии между потребителями тепла
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        list_alt
+                                    </i>
+                                    <h3>Развитие</h3>
+                                    <p>
+                                        совершенствование систем теплоснабжения жилищного
+                                        фонда и других объектов ДНР
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="feature">
+                                    <i class="material-icons">
+                                        build
+                                    </i>
+                                    <h3>Обслуживание</h3>
+                                    <p>
+                                        ремонт и своевремнное обслуживание основного и
+                                        вспомогательного оборудования
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="work-block" id="work">
+                <div class="center">
+                    @foreach (var slide in slides)
+                    {
+                        <div style="background: #eee; height: 300px">
+                            <img src="https://de.com.ua/uploads/thumb/0/home_energyslide/@slide" />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="stat-block">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        person
+                                    </i>
+                                    <h2><span class="counter text-center">1591</span><span>+</span></h2>
+                                    <p>СОТРУДНИКИ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        apartment
+                                    </i>
+                                    <h2><span class="counter text-center">118</span><span>+</span></h2>
+                                    <p>КОТЕЛЬНЫЕ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        developer_board
+                                    </i>
+                                    <h2><span class="counter text-center">424</span><span>+</span></h2>
+                                    <p>КОТЛЫ</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="stat-images">
+                                    <i class="material-icons">
+                                        sports
+                                    </i>
+                                    <h2><span class="counter text-center">663</span><span>+</span></h2>
+                                    <p>НАСОСЫ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-block" id="news">
                 <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-4">
-                            <div class="feature">
-                                <i class="material-icons">
-                                    fireplace
-                                </i>
-                                <h3>Теплоснабжение</h3>
-                                <p>
-                                    производство, транспортирование и распределение
-                                    тепловой энергии между потребителями тепла
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="feature">
-                                <i class="material-icons">
-                                    list_alt
-                                </i>
-                                <h3>Развитие</h3>
-                                <p>
-                                    совершенствование систем теплоснабжения жилищного
-                                    фонда и других объектов ДНР
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="feature">
-                                <i class="material-icons">
-                                    build
-                                </i>
-                                <h3>Обслуживание</h3>
-                                <p>
-                                    ремонт и своевремнное обслуживание основного и
-                                    вспомогательного оборудования
-                                </p>
-                            </div>
-                        </div>
+                    <div class="news-block-text">
+                        <h2 class="title">Новости</h2>
+                        <a class="linck" href="news">
+                            Смотреть все
+                            <i class="material-icons">
+                                keyboard_arrow_right
+                            </i>
+                        </a>
                     </div>
 
+                    @if (news == null)
+                    {
+                        <div class="spinner-border text-info" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="row">
+                            @foreach (var item in news)
+                            {
+                                <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
+                                    <span>
+                                        @item.Description
+                                    </span>
+                                </NewsCard>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
-        </div>
 
-        <div class="work-block" id="work">
-            <div class="center">
-                @foreach (var slide in slides)
-                {
-                    <div style="background: #eee; height: 300px">
-                        <img src="https://de.com.ua/uploads/thumb/0/home_energyslide/@slide" />
-                    </div>
-                }
+            <div class="col-12 text-center text-block">
+                <h1>Нам важно Ваше мнение</h1>
+                <p class="lead">
+                    В случае необходимости вы можете связаться с нами отправив нам свой коментарий
+                </p>
+                <a class="btn btn-linck waves-effect" href="#">
+                    Обратная связь
+                </a>
             </div>
+
+            <Contacts ContactInfo="contacts"
+                      Image="https://nua.in.ua/wp-content/uploads/2014/03/5571.jpg">
+                <Background>
+                    <div id="map"></div>
+                </Background>
+            </Contacts>
         </div>
-
-        <div class="stat-block">
-            <div class="jumbotron">
-                <div class="container">
-                    <div class="row text-center">
-                        <div class="col-md-3">
-                            <div class="stat-images">
-                                <i class="material-icons">
-                                    person
-                                </i>
-                                <h2><span class="counter text-center">1591</span><span>+</span></h2>
-                                <p>СОТРУДНИКИ</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="stat-images">
-                                <i class="material-icons">
-                                    apartment
-                                </i>
-                                <h2><span class="counter text-center">118</span><span>+</span></h2>
-                                <p>КОТЕЛЬНЫЕ</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="stat-images">
-                                <i class="material-icons">
-                                    developer_board
-                                </i>
-                                <h2><span class="counter text-center">424</span><span>+</span></h2>
-                                <p>КОТЛЫ</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="stat-images">
-                                <i class="material-icons">
-                                    sports
-                                </i>
-                                <h2><span class="counter text-center">663</span><span>+</span></h2>
-                                <p>НАСОСЫ</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="news-block" id="news">
-            <div class="container">
-                <div class="news-block-text">
-                    <h2 class="title">Новости</h2>
-                    <a class="linck" href="news">
-                        Смотреть все
-                        <i class="material-icons">
-                            keyboard_arrow_right
-                        </i>
-                    </a>
-                </div>
-
-                @if (news == null)
-                {
-                    <div class="spinner-border text-info" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                }
-                else
-                {
-                    <div class="row">
-                        @foreach (var item in news)
-                        {
-                            <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
-                                <span>
-                                    @item.Description
-                                </span>
-                            </NewsCard>
-                        }
-                    </div>
-                }
-            </div>
-        </div>
-
-        <div class="col-12 text-center text-block">
-            <h1>Нам важно Ваше мнение</h1>
-            <p class="lead">
-                В случае необходимости вы можете связаться с нами отправив нам свой коментарий
-            </p>
-            <a class="btn btn-linck" href="#">
-                Обратная связь
-            </a>
-        </div>
-
-        <Contacts ContactInfo="contacts"
-                  Image="https://nua.in.ua/wp-content/uploads/2014/03/5571.jpg">
-            <Background>
-                <div id="map"></div>
-            </Background>
-        </Contacts>
     </div>
 </div>
 
 @code
 {
-    IEnumerable<(string, string)> contacts = new []
+    IEnumerable<(string, string)> contacts = new[]
     {
         ("home", "г. Горловка ул. Великан д. 21"),
         ("email", "miha.smolenskiy2000@mail.ru"),
@@ -203,7 +219,7 @@
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if(firstRender)
+        if (firstRender)
             await JsRuntime.IndexInit();
 
         await JsRuntime.InitMap();

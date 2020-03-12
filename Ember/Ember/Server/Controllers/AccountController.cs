@@ -50,12 +50,10 @@ namespace Ember.Server.Controllers
 
             if (result.Succeeded)
             {
-                return BuildToken(userInfo);
+                return BadRequest("Invalid login attempt");
             }
-            else
-            {
-                return BadRequest("Username or password invalid");
-            }
+
+            return BuildToken(userInfo);
         }
 
         // Invoke-RestMethod https://localhost:44381/api/account/login 
@@ -79,15 +77,12 @@ namespace Ember.Server.Controllers
                 isPersistent: false, lockoutOnFailure: false)
                 .ConfigureAwait(true);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return BuildToken(userInfo);
+                return BadRequest("Username or password invalid");
             }
-            else
-            {
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                return BadRequest(ModelState);
-            }
+
+            return BuildToken(userInfo);
         }
 
         private UserToken BuildToken(UserInfo userInfo)

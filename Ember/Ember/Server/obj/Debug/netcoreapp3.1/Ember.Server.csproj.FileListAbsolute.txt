@@ -166,4 +166,14 @@ D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityMo
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Authorization.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.JSInterop.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Ember.Client.StaticWebAssets.xml
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Ember.Server.StaticWebAssets.xml
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Blazored.Modal.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
 D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.MvcApplicationPartsAssemblyInfo.cache

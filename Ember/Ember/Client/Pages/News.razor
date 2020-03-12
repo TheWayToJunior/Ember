@@ -1,106 +1,122 @@
 ﻿@page "/news"
-
+@layout MainLayout
 @using System.Text.Json
 
 @inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
-<section>
-    <div class="container-fluid">
-        <div class="container">
+<Intro BodyId="@("body")" ImgSource="/img/banner-news.jpg">
+    <div class="banner-text">
+        <h2>Новости</h2>
+        <p>
+            предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+            для обеспечения комфортных условий труда и проживания граждан.
+        </p>
+    </div>
+</Intro>
 
-            <div class="news-category">
-                <Category CurrentCategory="currentCategory" Links="Links" SelectedLink="SelectedLink" />
-            </div>
+<header id="header">
+    <NavMenu Image="/img/Logo.png" CssClassImage="logo-img" />
+</header>
 
-            @if (news == null)
-            {
-                <div class="spinner-border text-info" role="status">
-                    <span class="sr-only">Loading...</span>
+<div class="body" id="body">
+    <section>
+        <div class="container-fluid">
+            <div class="container">
+
+                <div class="news-category">
+                    <Category CurrentCategory="currentCategory" Links="Links" SelectedLink="SelectedLink" />
                 </div>
-            }
-            else
-            {
-                @foreach (var item in news)
+
+                @if (news == null)
                 {
-                    <div class="blog-post">
-                        <div class="blog-post__img">
-                            <img src="@item.ImageSrc" />
-                        </div>
-                        <div class="blog-post__info">
-                            <div class="blog-post__date">
-                                <span>@item.Time.Date.DayOfWeek</span>
-                                <span>@item.Time.ToLongDateString()</span>
-                            </div>
-                            <h1 class="blog-post__title">@item.Title</h1>
-                            <p class="blog-post__text">@item.Description</p>
-                            <a class="blog-post__cta" href="#">Подробнее</a>
-                        </div>
+                    <div class="spinner-border text-info" role="status">
+                        <span class="sr-only">Loading...</span>
                     </div>
                 }
-            }
+                else
+                {
+                    @foreach (var item in news)
+                    {
+                        <div class="blog-post">
+                            <div class="blog-post__img">
+                                <img src="@item.ImageSrc" />
+                            </div>
+                            <div class="blog-post__info">
+                                <div class="blog-post__date">
+                                    <span>@item.Time.Date.DayOfWeek</span>
+                                    <span>@item.Time.ToLongDateString()</span>
+                                </div>
+                                <h1 class="blog-post__title">@item.Title</h1>
+                                <p class="blog-post__text">@item.Description</p>
+                                <a class="blog-post__cta" href="#">Подробнее</a>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
         </div>
-    </div>
 
-    <Pagination CurrentPage="currentPage" PageQuantity="pageQuantity" Range="2" SelectedPage="SelectedPage" />
-</section>
+        <Pagination CurrentPage="currentPage" PageQuantity="pageQuantity" Range="2" SelectedPage="SelectedPage" />
+    </section>
+</div>
 
-@code
+    @code
 {
-    private IEnumerable<NewsPost> news = null;
+        private IEnumerable<NewsPost> news = null;
 
-    private IEnumerable<(string, CategoryMode)> Links = new[]
-    {
+        private IEnumerable<(string, CategoryMode)> Links = new[]
+        {
         ("Все", CategoryMode.All),
         ("События", CategoryMode.Events),
         ("Ремонт", CategoryMode.Repair),
         ("Экология", CategoryMode.Ecology)
     };
 
-    int currentPage = 1;
-    CategoryMode currentCategory = CategoryMode.All;
+        int currentPage = 1;
+        CategoryMode currentCategory = CategoryMode.All;
 
-    int pageQuantity;
-    int quantityPerPage = 5;
+        int pageQuantity;
+        int quantityPerPage = 5;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await GetNews();
-    }
-
-    private async Task SelectedLink(CategoryMode category)
-    {
-        currentPage = 1;
-        currentCategory = category;
-
-        await GetNews();
-    }
-
-    private async Task SelectedPage(int page)
-    {
-        currentPage = page;
-
-        await GetNews();
-        await JsRuntime.ScrollToElementId("top");
-    }
-
-    private async Task GetNews()
-    {
-        var httpResponse = await HttpClient
-            .GetAsync($"api/News?page={currentPage}&quantityPerPage={quantityPerPage}&category={currentCategory}");
-
-        if (httpResponse.IsSuccessStatusCode)
+        protected override async Task OnInitializedAsync()
         {
-            pageQuantity = Convert.ToInt32(httpResponse.Headers.GetValues("pageQuantity").FirstOrDefault());
-
-            var responsString = await httpResponse.Content.ReadAsStringAsync();
-
-            news = JsonSerializer.Deserialize<List<NewsPost>>(responsString,
-                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            await GetNews();
         }
-        else
+
+        private async Task SelectedLink(CategoryMode category)
         {
-            Console.WriteLine(httpResponse.StatusCode);
+            currentPage = 1;
+            currentCategory = category;
+
+            await GetNews();
+        }
+
+        private async Task SelectedPage(int page)
+        {
+            currentPage = page;
+
+            await GetNews();
+            await JsRuntime.ScrollToElementId("body");
+        }
+
+        private async Task GetNews()
+        {
+            var httpResponse = await HttpClient
+                .GetAsync($"api/News?page={currentPage}&quantityPerPage={quantityPerPage}&category={currentCategory}");
+
+            if (httpResponse.IsSuccessStatusCode)
+            {
+                pageQuantity = Convert.ToInt32(httpResponse.Headers.GetValues("pageQuantity").FirstOrDefault());
+
+                var responsString = await httpResponse.Content.ReadAsStringAsync();
+
+                news = JsonSerializer.Deserialize<List<NewsPost>>(responsString,
+                    new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            }
+            else
+            {
+                Console.WriteLine(httpResponse.StatusCode);
+            }
         }
     }
-}
