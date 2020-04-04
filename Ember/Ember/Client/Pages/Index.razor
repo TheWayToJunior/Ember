@@ -89,53 +89,7 @@
                 </div>
             </div>
 
-            <div class="stat-block">
-                <div class="jumbotron">
-                    <div class="container">
-                        <div class="row text-center">
-                            <div class="col-md-3">
-                                <div class="stat-images">
-                                    <i class="material-icons">
-                                        person
-                                    </i>
-                                    <h2><span class="counter text-center">1591</span><span>+</span></h2>
-                                    <p>СОТРУДНИКИ</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="stat-images">
-                                    <i class="material-icons">
-                                        apartment
-                                    </i>
-                                    <h2><span class="counter text-center">118</span><span>+</span></h2>
-                                    <p>КОТЕЛЬНЫЕ</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="stat-images">
-                                    <i class="material-icons">
-                                        developer_board
-                                    </i>
-                                    <h2><span class="counter text-center">424</span><span>+</span></h2>
-                                    <p>КОТЛЫ</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="stat-images">
-                                    <i class="material-icons">
-                                        sports
-                                    </i>
-                                    <h2><span class="counter text-center">663</span><span>+</span></h2>
-                                    <p>НАСОСЫ</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @*<Structure></Structure>*@
 
             <div class="news-block" id="news">
                 <div class="container">
@@ -220,7 +174,9 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
-            await JsRuntime.IndexInit();
+        {
+            await JsRuntime.InitSlick();
+        }
 
         await JsRuntime.InitMap();
     }

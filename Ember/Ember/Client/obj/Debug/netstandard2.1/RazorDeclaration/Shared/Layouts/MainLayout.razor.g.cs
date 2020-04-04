@@ -35,133 +35,133 @@ using System.Text.Json;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 6 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 7 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 8 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 9 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 10 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 11 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 13 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 15 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 16 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client.Auth;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 16 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 17 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 18 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client.Shared.Auth;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 19 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client.Shared.Main;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
-using Ember.Client.Shared.Main.News;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 20 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
-using Ember.Client.Shared.Layouts;
+using Ember.Client.Shared.Main.Components;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 21 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+using Ember.Client.Shared.Layouts;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 22 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Ember.Client.Helpers;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 23 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 24 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using BlazorComponentUtilities;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 24 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 25 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Blazored;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 25 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 26 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Blazored.Modal;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 26 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
+#line 27 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
 using Blazored.Modal.Services;
 
 #line default

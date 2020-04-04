@@ -1,11 +1,15 @@
 ﻿@page "/account"
+
 @layout AccountLayout
 
 @attribute [Authorize]
 
 <div class="jumbotron">
     <div class="container text-center">
-        <h3>Account</h3>
+        <h3>Account </h3>
+        <AuthorizeView Roles="@UserRoles.Admin">
+            <h3>Admin</h3>
+        </AuthorizeView>
     </div>
 </div>
 

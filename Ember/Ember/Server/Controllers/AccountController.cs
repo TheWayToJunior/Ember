@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -22,15 +23,11 @@ namespace Ember.Server.Controllers
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
             IConfiguration configuration)
         {
-            this.userManager   = userManager   ?? throw new ArgumentNullException(nameof(userManager));
+            this.userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
             this.signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
             this.configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
-        // Invoke-RestMethod https://localhost:44381/api/account/create 
-        // -Method POST 
-        // -Body (@{email = "test@test.com"; password = tEst1234} | ConvertTo-Json)
-        // -ContentType "application/json; charset=utf-8"
         [HttpPost("Create")]
         public async Task<ActionResult<UserToken>> Create([FromBody] UserInfo userInfo)
         {
@@ -48,18 +45,18 @@ namespace Ember.Server.Controllers
             var result = await userManager.CreateAsync(user, userInfo.Password)
                 .ConfigureAwait(true);
 
+            await userManager.AddToRoleAsync(user, UserRoles.User)
+                .ConfigureAwait(true);
+
             if (result.Succeeded)
             {
                 return BadRequest("Invalid login attempt");
             }
 
-            return BuildToken(userInfo);
+            return BuildToken(userInfo, await GetUserRoles(userInfo.Email)
+                .ConfigureAwait(true));
         }
 
-        // Invoke-RestMethod https://localhost:44381/api/account/login 
-        // -Method POST 
-        // -Body (@{email = "test@test.com"; password = tEst1234} | ConvertTo-Json)
-        // -ContentType "application/json; charset=utf-8"
         [HttpPost("Login")]
         public async Task<ActionResult<UserToken>> Login([FromBody] UserInfo userInfo)
         {
@@ -82,17 +79,32 @@ namespace Ember.Server.Controllers
                 return BadRequest("Username or password invalid");
             }
 
-            return BuildToken(userInfo);
+            return BuildToken(userInfo, await GetUserRoles(userInfo.Email)
+                .ConfigureAwait(true));
         }
 
-        private UserToken BuildToken(UserInfo userInfo)
+        private async Task<IList<string>> GetUserRoles(string Email)
         {
-            var claims = new[]
+            var user = await userManager.FindByEmailAsync(Email)
+               .ConfigureAwait(true);
+
+            return await userManager.GetRolesAsync(user)
+                .ConfigureAwait(true);
+        }
+
+        private UserToken BuildToken(UserInfo userInfo, IList<string> userRoles)
+        {
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
                 new Claim(ClaimTypes.Name, userInfo.Email)
             };
+
+            foreach (var role in userRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["jwt:key"]));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
