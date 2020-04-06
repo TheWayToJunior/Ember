@@ -13,13 +13,15 @@ namespace Ember.Server
             //initializing custom roles 
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            string[] roleNames = { UserRoles.Admin, UserRoles.Editor, UserRoles.User };
+
+            string[] roleNames = { Roles.Admin, Roles.Editor, Roles.User };
             IdentityResult roleResult;
 
             foreach (var roleName in roleNames)
             {
                 var roleExist = await RoleManager.RoleExistsAsync(roleName)
                     .ConfigureAwait(true);
+
                 // ensure that the role does not exist
                 if (!roleExist)
                 {
@@ -46,12 +48,12 @@ namespace Ember.Server
 
                 var createPowerUser = await UserManager.CreateAsync(poweruser, adminPassword)
                         .ConfigureAwait(true);
+
                 if (createPowerUser.Succeeded)
                 {
                     //here we tie the new user to the role
                     await UserManager.AddToRoleAsync(poweruser, "Admin")
                         .ConfigureAwait(true);
-
                 }
             }
         }

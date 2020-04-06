@@ -4,15 +4,65 @@
 
 @attribute [Authorize]
 
+@inject HttpClient HttpClient
+
 <div class="jumbotron">
     <div class="container text-center">
         <h3>Account </h3>
-        <AuthorizeView Roles="@UserRoles.Admin">
+        <AuthorizeView Roles="@Roles.Admin">
             <h3>Admin</h3>
+
+            @if (userRoles != null)
+            {
+                int i = 1;
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">№</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in userRoles)
+                    {
+                        <tbody>
+                            <tr>
+                                <th scope="row">@(i++)</th>
+                                <td>@item.Email</td>
+                                <td>@item.AllUserRoles.FirstOrDefault()</td>
+                                <td>
+                                    <a class="btn btn-link" href="javascript:void(0)">Role</a>
+                                    <a class="btn btn-link" href="javascript:void(0)">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            }
         </AuthorizeView>
     </div>
 </div>
 
 @code {
+    IEnumerable<UserRoles> userRoles = null;
 
+    protected override async Task OnInitializedAsync()
+    {
+        var httpResponse = await HttpClient
+             .GetAsync($"api/UserRoles");
+
+        if (httpResponse.IsSuccessStatusCode)
+        {
+            var responsString = await httpResponse.Content.ReadAsStringAsync();
+
+            userRoles = JsonSerializer.Deserialize<List<UserRoles>>(responsString,
+                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        }
+        else
+        {
+            Console.WriteLine(httpResponse.StatusCode);
+        }
+    }
 }

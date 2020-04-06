@@ -15,6 +15,7 @@ namespace Ember.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin, Editor")]
     public class NewsController : ControllerBase
     {
         private readonly INewsService newsServece;
@@ -25,6 +26,7 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<NewsPost>>> GetAll([FromQuery] PaginationDTO pagination, 
             CategoryMode category = CategoryMode.All)
         {
@@ -44,6 +46,7 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<NewsPost>> Get(int id)
         {
             NewsPost newsPost = await newsServece.GetById(id)

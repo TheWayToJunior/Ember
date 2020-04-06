@@ -12,11 +12,13 @@
             @ChildContent
             <AuthorizeView>
                 <Authorized>
+                    
                     <div class="banner-buttom">
-                        <a class="btn btn-solid waves-effect" href="account">
+                        <a class="btn btn-solid waves-effect" href="account" style="max-width:300px;">
                             <i class="material-icons icon">
                                 supervisor_account
                             </i>
+                            @*<span style="font-size: 11px; text-transform: none;">@userName</span>*@
                             Личный кабинет
                         </a>
                     </div>
@@ -50,4 +52,14 @@
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    string userName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+        if(state.User.Identity.IsAuthenticated)
+            userName = state.User.Identity.Name;
+    }
 }

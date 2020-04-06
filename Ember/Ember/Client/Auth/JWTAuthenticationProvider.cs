@@ -51,7 +51,7 @@ namespace Ember.Client.Auth
         public async Task Logout()
         {
             httpClient.DefaultRequestHeaders.Authorization = null;
-
+            
             await jsRuntime.RemoveItem(tokenKey);
 
             NotifyAuthenticationStateChanged(Task.FromResult(Anonymous));

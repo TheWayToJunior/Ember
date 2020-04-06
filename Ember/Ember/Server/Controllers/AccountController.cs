@@ -45,7 +45,7 @@ namespace Ember.Server.Controllers
             var result = await userManager.CreateAsync(user, userInfo.Password)
                 .ConfigureAwait(true);
 
-            await userManager.AddToRoleAsync(user, UserRoles.User)
+            await userManager.AddToRoleAsync(user, Roles.User)
                 .ConfigureAwait(true);
 
             if (result.Succeeded)
@@ -83,9 +83,9 @@ namespace Ember.Server.Controllers
                 .ConfigureAwait(true));
         }
 
-        private async Task<IList<string>> GetUserRoles(string Email)
+        private async Task<IList<string>> GetUserRoles(string email)
         {
-            var user = await userManager.FindByEmailAsync(Email)
+            var user = await userManager.FindByEmailAsync(email)
                .ConfigureAwait(true);
 
             return await userManager.GetRolesAsync(user)
@@ -110,7 +110,7 @@ namespace Ember.Server.Controllers
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             // Expiration time
-            var expiration = DateTime.UtcNow.AddYears(1);
+            var expiration = DateTime.UtcNow.AddDays(1);
 
             JwtSecurityToken jwt = new JwtSecurityToken(
                issuer: null,

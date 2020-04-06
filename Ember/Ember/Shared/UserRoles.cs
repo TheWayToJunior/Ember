@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,10 @@ namespace Ember.Shared
 {
     public class UserRoles
     {
-        public static string Admin { get; } = "Admin";
+        public string Email { get; set; }
 
-        public static string Editor { get; } = "Editor";
+        public IList<IdentityRole> AllRoles { get; set; }
 
-        public static string User { get; } = "User";
+        public IList<string> AllUserRoles { get; set; }
     }
 }
