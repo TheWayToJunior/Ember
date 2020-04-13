@@ -25,6 +25,11 @@ a:hover {
     color: #fff;
 }
 
+.alert-danger {
+    overflow: hidden;
+    max-width: 530px;
+}
+
 .btn {
     padding: 10px 20px;
     font-size: 10px;

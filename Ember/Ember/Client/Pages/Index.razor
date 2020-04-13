@@ -114,11 +114,11 @@
                         <div class="row">
                             @foreach (var item in news)
                             {
-                                <NewsCard Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
+                                <Card Date="@item.Time" ImageSrc="@item.ImageSrc" Title="@item.Title">
                                     <span>
                                         @item.Description
                                     </span>
-                                </NewsCard>
+                                </Card>
                             }
                         </div>
                     }

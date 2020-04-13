@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Ember.Server.Exceptions;
 using Ember.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ember.Server.Controllers
 {
@@ -17,8 +17,8 @@ namespace Ember.Server.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class UserRolesController : ControllerBase
     {
-        private UserManager<IdentityUser> userManager;
-        private RoleManager<IdentityRole> roleManager;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public UserRolesController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
@@ -42,7 +42,7 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserRoles>>> GetAll() 
+        public async Task<ActionResult<IEnumerable<UserRoles>>> GetAll()
         {
             var users = new List<UserRoles>();
 
@@ -62,36 +62,69 @@ namespace Ember.Server.Controllers
                 .ConfigureAwait(true);
 
             if (user == null)
-                return BadRequest();
+            {
+                return BadRequest($"The user \"{email}\" was not found");
+            }
 
             return Ok(await CreateUserRoles(user)
                     .ConfigureAwait(true));
         }
 
         [HttpPut("Edit")]
-        public async Task<ActionResult<IEnumerable<UserRoles>>> Edit(string email, [FromBody] IEnumerable<string> roles)
+        public async Task<ActionResult> Edit(string email, [FromBody] IEnumerable<string> roles)
         {
             var user = await userManager.FindByEmailAsync(email)
                 .ConfigureAwait(true);
 
             if (user == null)
-                return BadRequest("Not user");
+            {
+                return BadRequest($"The user \"{email}\" was not found");
+            }
 
             if (roles == null || !roles.Any())
-                return BadRequest("Not roles");
+            {
+                return BadRequest("The role collection is null or empty");
+            }
 
+            /// Проверка валидности ролей
             foreach (var role in roles)
             {
-
                 var anyRole = await roleManager.FindByNameAsync(role)
                     .ConfigureAwait(true);
 
                 if (anyRole == null)
+                {
                     return BadRequest($"Role \"{role}\" is not found");
+                }
             }
 
+            try
+            {
+                await СhangRoles(user, roles)
+                    .ConfigureAwait(true);
+
+                return NoContent();
+            }
+            catch (NoAccessChangRoleException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        private async Task СhangRoles(IdentityUser user, IEnumerable<string> roles)
+        {
             var userRoles = await userManager.GetRolesAsync(user)
-                .ConfigureAwait(true);
+                 .ConfigureAwait(true);
+
+            if (userRoles.Any(role => role == Roles.Admin))
+            {
+                throw new NoAccessChangRoleException($"Cannot change the {Roles.Admin} role");
+            }
+
+            if (roles.Any(role => role == Roles.Admin))
+            {
+                throw new NoAccessChangRoleException($"Cannot change the {Roles.Admin} role");
+            }
 
             /// Поиск ролей которые необходимо добавить
             var addedRoles = roles.Except(userRoles);
@@ -104,8 +137,6 @@ namespace Ember.Server.Controllers
 
             await userManager.RemoveFromRolesAsync(user, removedRoles)
                 .ConfigureAwait(true);
-
-            return NoContent();
         }
     }
 }

@@ -91,8 +91,6 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\App.razor.g.c
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Index.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\News.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\_Imports.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Auth\Login.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Auth\Login.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Account.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Account.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Intro.razor.g.cs
@@ -111,12 +109,10 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Sh
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Components\Loader.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Components\Pagination.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Contacts.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\NewsCard.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Components\Category.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Components\Loader.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Components\Pagination.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Contacts.razor.g.cs
-D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\NewsCard.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Components\ScrollLine.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Components\ScrollLine.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Structure.razor.g.cs
@@ -162,3 +158,9 @@ D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\Microsoft.Extension
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\Microsoft.Extensions.Logging.dll
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\System.Collections.Immutable.dll
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\System.Diagnostics.DiagnosticSource.dll
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Main\Components\Card.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\EditRoles.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\Login.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Main\Components\Card.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\EditRoles.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\Login.razor.g.cs

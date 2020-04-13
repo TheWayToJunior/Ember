@@ -48,7 +48,7 @@ namespace Ember.Server.Controllers
             await userManager.AddToRoleAsync(user, Roles.User)
                 .ConfigureAwait(true);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
                 return BadRequest("Invalid login attempt");
             }

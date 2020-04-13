@@ -106,7 +106,7 @@ using Ember.Client.Shared;
 #nullable disable
 #nullable restore
 #line 18 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
-using Ember.Client.Shared.Auth;
+using Ember.Client.Shared.Modal;
 
 #line default
 #line hidden

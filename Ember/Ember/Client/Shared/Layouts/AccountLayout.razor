@@ -19,14 +19,15 @@
                             <a href="#" class="nav-link waves-effect"><span style="margin-right: 25px;">@userName</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href=""class="nav-link waves-effect" @onclick="() => LoginService.Logout()">Logout</a>
+                            <a href="" class="nav-link waves-effect" @onclick="() => LoginService.Logout()">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container" style="margin-top:60px;">
+    <BlazoredModal />
+    <div class="container" style="margin-top: 60px">
         @Body
     </div>
 </div>

@@ -102,7 +102,7 @@ using Ember.Client.Shared;
 #nullable disable
 #nullable restore
 #line 18 "D:\С#\.NET Core\Ember\Ember\Client\_Imports.razor"
-using Ember.Client.Shared.Auth;
+using Ember.Client.Shared.Modal;
 
 #line default
 #line hidden
@@ -201,7 +201,7 @@ using Blazored.Modal.Services;
                 ));
                 __builder2.AddAttribute(7, "NotAuthorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder3) => {
                     __builder3.AddMarkupContent(8, "\r\n                ");
-                    __builder3.OpenComponent<Ember.Client.Shared.Auth.Login>(9);
+                    __builder3.OpenComponent<Ember.Client.Shared.Modal.Login>(9);
                     __builder3.CloseComponent();
                     __builder3.AddMarkupContent(10, "\r\n            ");
                 }

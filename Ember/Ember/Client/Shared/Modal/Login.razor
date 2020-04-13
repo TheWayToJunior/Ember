@@ -1,7 +1,6 @@
 ﻿@inject HttpClient http
 @inject NavigationManager navigationManager
 
-@inject IModalService Modal
 @inject ILoginService  loginService
 
 @if (ShowErrors)
@@ -11,7 +10,7 @@
     </div>
 }
 
-<EditForm Model="userInfo" OnValidSubmit="LoginUser">
+<EditForm Model="userInfo" OnValidSubmit="LoginUser" @attributes="EditFormAttributes">
     <DataAnnotationsValidator />
 
     <div class="form-group">
@@ -34,6 +33,12 @@
     string Error = "";
     bool ShowErrors = false;
 
+    Dictionary<string, object> EditFormAttributes =
+        new Dictionary<string, object>
+        {
+            { "style", "min-width:290px;" }
+        };
+
     private UserInfo userInfo = new UserInfo();
 
     async Task LoginUser()
@@ -50,8 +55,6 @@
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
             await loginService.Login(userToken.Token);
-
-            Modal.Close();
 
             navigationManager.NavigateTo("/account");
         }
