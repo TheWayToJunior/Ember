@@ -1,7 +1,7 @@
 ﻿
 
 <div class="col-sm-4">
-    <div class="card">
+    <div class="card news-card">
         <div class="news-card-img">
             <img class="img-responsive" src="@ImageSrc" />
         </div>
@@ -15,7 +15,7 @@
                         </i>
                         @Date.ToShortDateString()
                     </a>
-                    <a href="#">Подробнее</a>
+                    <a href="@Source">Подробнее</a>
                 </span>
             </div>
             <h2 class="news-header">@Title</h2>
@@ -34,6 +34,9 @@
 
     [Parameter]
     public string ImageSrc { get; set; }
+
+    [Parameter]
+    public string Source { get; set; }
 
     [Parameter]
     public DateTime Date { get; set; }

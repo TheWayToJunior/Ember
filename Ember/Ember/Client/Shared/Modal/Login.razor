@@ -10,7 +10,7 @@
     </div>
 }
 
-<EditForm Model="userInfo" OnValidSubmit="LoginUser" @attributes="EditFormAttributes">
+<EditForm Model="userInfo" OnValidSubmit="@(async () => await LoginUser())" @attributes="EditFormAttributes">
     <DataAnnotationsValidator />
 
     <div class="form-group">

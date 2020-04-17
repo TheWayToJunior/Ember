@@ -35,8 +35,11 @@ namespace Ember.Server.Controllers
                 throw new ArgumentNullException(nameof(pagination));
             }
 
-            IQueryable<NewsPost> posts = category == CategoryMode.All ? newsServece.GetAll().OrderByDescending(news => news.Id)
-                : newsServece.GetAll().OrderByDescending(news => news.Id).Where(news => news.Category == category);
+            var postasDescending = newsServece.GetAll().OrderByDescending(news => news.Id);
+
+            IQueryable<NewsPost> posts = category == CategoryMode.All 
+                ? postasDescending
+                : postasDescending.Where(news => news.Category == category);
 
             await HttpContext.InsertPaginationsPerPage(posts, pagination.QuantityPerPage)
                 .ConfigureAwait(true);

@@ -17,6 +17,7 @@ namespace Ember.Server
                     .AddCommandLine(args)
                     .Build())
                 .UseStartup<Startup>()
+                .UseIISIntegration()
                 .Build();
     }
 }

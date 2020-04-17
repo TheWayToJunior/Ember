@@ -1,4 +1,5 @@
 ﻿using Ember.Server.Exceptions;
+using Ember.Server.Helpers;
 using Ember.Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
@@ -42,17 +43,31 @@ namespace Ember.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserRoles>>> GetAll()
+        public async Task<ActionResult<IEnumerable<UserRoles>>> GetAll([FromQuery] PaginationDTO pagination, 
+            string role = "")
         {
-            var users = new List<UserRoles>();
-
-            foreach (var user in userManager.Users)
+            if (pagination == null)
             {
-                users.Add(await CreateUserRoles(user)
+                throw new ArgumentNullException(nameof(pagination));
+            }
+
+            var usersRoles = new List<UserRoles>();
+
+            IEnumerable<IdentityUser> users = string.IsNullOrEmpty(role) 
+                ? userManager.Users.ToList() 
+                : await userManager.GetUsersInRoleAsync(role).ConfigureAwait(true);
+
+            HttpContext.InsertPaginationsPerPage(users, pagination.QuantityPerPage);
+
+            var usersPagination = users.Pagination(pagination);
+
+            foreach (var user in usersPagination)
+            {
+                usersRoles.Add(await CreateUserRoles(user)
                     .ConfigureAwait(true));
             }
 
-            return Ok(users);
+            return Ok(usersRoles);
         }
 
         [HttpGet("Get")]
@@ -68,6 +83,20 @@ namespace Ember.Server.Controllers
 
             return Ok(await CreateUserRoles(user)
                     .ConfigureAwait(true));
+        }
+
+        [HttpGet("GerRoleStatistics")]
+        public async Task<ActionResult<RoleStatistics>> GerRoleStatistics()
+        {
+            Func<string, Task<int>> getStatistics = async (role) => 
+                (await userManager.GetUsersInRoleAsync(role).ConfigureAwait(true)).Count;
+
+            return new RoleStatistics
+            {
+                Users =   await getStatistics(Roles.User).ConfigureAwait(true),
+                Editors = await getStatistics(Roles.Editor).ConfigureAwait(true),
+                Admins =  await getStatistics(Roles.Admin).ConfigureAwait(true)
+            };
         }
 
         [HttpPut("Edit")]

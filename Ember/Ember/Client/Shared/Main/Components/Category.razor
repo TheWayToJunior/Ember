@@ -13,13 +13,13 @@
 
 @code {
     [Parameter]
-    public CategoryMode CurrentCategory { get; set; }
+    public object CurrentCategory { get; set; }
 
     [Parameter]
-    public IEnumerable<(string text, CategoryMode category)> Links { get; set; }
+    public Dictionary<string, object> Links { get; set; }
 
     [Parameter]
-    public EventCallback<CategoryMode> SelectedLink { get; set; }
+    public EventCallback<object> SelectedLink { get; set; }
 
     List<LinkModel> links;
 
@@ -42,18 +42,18 @@
     {
         links = new List<LinkModel>();
 
-        foreach (var linck in Links)
+        foreach (var key in Links.Keys)
         {
-            links.Add(new LinkModel(linck.text, linck.category) 
-            { 
-                Active = CurrentCategory == linck.category
+            links.Add(new LinkModel(key, Links[key])
+            {
+                Active = CurrentCategory.Equals(Links[key])
             });
         }
     }
 
     class LinkModel
     {
-        public LinkModel(string text, CategoryMode сategory)
+        public LinkModel(string text, object сategory)
         {
             Category = сategory;
             Text = text;
@@ -61,7 +61,7 @@
 
         public string Text { get; set; }
 
-        public CategoryMode Category{ get; set; }
+        public object Category { get; set; }
 
         public bool Active { get; set; } = false;
     }

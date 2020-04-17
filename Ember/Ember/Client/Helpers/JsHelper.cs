@@ -42,5 +42,10 @@ namespace Ember.Client.Helpers
         {
             await JSRuntime.InvokeVoidAsync("localStorage.removeItem", key);
         }
+
+        public static async ValueTask InitPieChart(this IJSRuntime JSRuntime, int usets, int editors, int admins)
+        {
+            await JSRuntime.InvokeVoidAsync("initPieChart", usets, editors, admins);
+        }
     }
 }

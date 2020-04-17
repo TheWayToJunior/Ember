@@ -15,7 +15,7 @@ namespace Ember.Server.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -30,15 +30,22 @@ namespace Ember.Server.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(500)")
+                        .HasMaxLength(500);
 
                     b.Property<string>("ImageSrc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Source")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -48,66 +55,30 @@ namespace Ember.Server.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 7,
+                            Id = 1,
                             Category = 2,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
                             ImageSrc = "https://sun9-9.userapi.com/c850128/v850128254/1d36a9/B54sYaowd5E.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 210, DateTimeKind.Local).AddTicks(5280),
+                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 955, DateTimeKind.Local).AddTicks(9501),
                             Title = "Об итогах ремонтного периода."
-                        },
-                        new
-                        {
-                            Id = 1,
-                            Category = 2,
-                            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимнийСогласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-28.userapi.com/c204516/v204516299/3b411/0qjhwQo15mw.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6703),
-                            Title = "Внимание произвадятся работы!!!"
                         },
                         new
                         {
                             Id = 2,
-                            Category = 3,
+                            Category = 2,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6963),
-                            Title = "Инвестиционная программа 2019 года"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Category = 1,
-                            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-11.userapi.com/c857016/v857016695/75e15/jvemse0yWlE.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6971),
-                            Title = "Об итогах ремонтного периода."
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Category = 1,
-                            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-60.userapi.com/c850636/v850636790/1ff3b2/R0pcwT1oVsw.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6976),
+                            ImageSrc = "https://sun9-28.userapi.com/c204516/v204516299/3b411/0qjhwQo15mw.jpg",
+                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 958, DateTimeKind.Local).AddTicks(7957),
                             Title = "Внимание произвадятся работы!!!"
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 3,
                             Category = 3,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-28.userapi.com/c854224/v854224084/12aa7f/aJlUY851MCw.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6981),
+                            ImageSrc = "https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
+                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 958, DateTimeKind.Local).AddTicks(8127),
                             Title = "Инвестиционная программа 2019 года"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Category = 1,
-                            Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
-                            ImageSrc = "https://sun9-26.userapi.com/c206624/v206624328/1cfc1/QhLJ8tTkLC8.jpg",
-                            Time = new DateTime(2020, 2, 26, 14, 37, 15, 241, DateTimeKind.Local).AddTicks(6986),
-                            Title = "Об итогах ремонтного периода."
                         });
                 });
 
