@@ -60,12 +60,19 @@
                             </div>
                             <div class="blog-post__info">
                                 <div class="blog-post__date">
-                                    <span>@item.Time.Date.DayOfWeek</span>
+                                    @*<span>@item.Time.Date.DayOfWeek</span>*@
                                     <span>@item.Time.ToLongDateString()</span>
                                 </div>
                                 <h1 class="blog-post__title">@item.Title</h1>
                                 <p class="blog-post__text">@item.Description</p>
-                                <a class="btn blog-post__cta waves-effect" href="@item.Source">Подробнее</a>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary d-flex align-items-center waves-effect" href="@item.Source">
+                                        <span class="material-icons icon">
+                                            arrow_back_ios
+                                        </span>
+                                        Подробнее
+                                    </a>
+                                </div>
 
                                 <AuthorizeView Roles="@($"{Roles.Admin}, {Roles.Editor}")">
                                     <a class="btn btn-warning waves-effect" href="javascript:void(0)"

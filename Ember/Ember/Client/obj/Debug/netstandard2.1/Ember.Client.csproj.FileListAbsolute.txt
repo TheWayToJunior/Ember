@@ -29,8 +29,6 @@ D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bi
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\System.Text.Json.dll
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\WebAssembly.Bindings.dll
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\WebAssembly.Net.Http.dll
-D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Client.pdb
-D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Shared.pdb
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\blazor.boot.json
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\wasm\mono.js
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\wasm\mono.wasm
@@ -171,3 +169,5 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pa
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Pages\Account\Statistics.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Account\Admin.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Account\Statistics.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Client.pdb
+D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Shared.pdb
