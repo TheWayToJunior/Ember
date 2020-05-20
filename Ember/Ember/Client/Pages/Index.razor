@@ -3,15 +3,16 @@
 @inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
-<Intro BodyId="@("body")" ImgSource="/img/banner-index.jpg">
-    <div class="banner-text">
-        <h2>СПП Уголек <br> ГП <span>Донбасстепло<span class="text-primary">энерго</span></span></h2>
-        <p>
-            предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
-            для обеспечения комфортных условий труда и проживания граждан.
-        </p>
-    </div>
-</Intro>
+    <Intro BodyId="@("body")" ImgSource="https://invest26.ru/upload/iblock/400/4002b07f21461f6546535fe41833872b.JPG">
+        @*/img/banner-index.jpg*@
+        <div class="banner-text">
+            <h2>СПП Уголек <br> ГП <span>Донбасстепло<span class="text-primary">энерго</span></span></h2>
+            <p>
+                предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+                для обеспечения комфортных условий труда и проживания граждан.
+            </p>
+        </div>
+    </Intro>
 
 <header id="header">
     <NavMenu Image="/img/Logo.png" CssClassImage="logo-img" />
@@ -40,7 +41,7 @@
                     @foreach (var slide in slides)
                     {
                         <div style="background: #eee; height: 300px">
-                            <img src="https://de.com.ua/uploads/thumb/0/home_energyslide/@slide" />
+                            <img src="@slide" />
                         </div>
                     }
                 </div>
@@ -164,8 +165,12 @@
 
     string[] slides =
     {
-        "123-E54J1357.jpg", "116-E54J3014.jpg", "117-E54J2966.jpg",
-        "1529-E54J2849.jpg", "124-E54J5341.jpg"
+        "https://de.com.ua/uploads/thumb/0/home_energyslide/123-E54J1357.jpg",
+        "https://sun9-2.userapi.com/c850720/v850720430/ed5a9/wYDq1V8TND4.jpg",
+        "https://sun9-19.userapi.com/c850632/v850632256/12cc53/KZIhDPJ7bp0.jpg",
+        "https://de.com.ua/uploads/thumb/0/home_energyslide/116-E54J3014.jpg",
+        "https://de.com.ua/uploads/thumb/0/home_energyslide/117-E54J2966.jpg",
+        "https://sun9-28.userapi.com/c854224/v854224084/12aa7f/aJlUY851MCw.jpg"
     };
 
     private IEnumerable<NewsPost> news = null;

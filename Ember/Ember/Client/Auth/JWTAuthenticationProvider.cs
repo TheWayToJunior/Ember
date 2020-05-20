@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Ember.Client.Helpers;
+using Ember.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
 
@@ -18,6 +19,7 @@ namespace Ember.Client.Auth
         private readonly HttpClient httpClient;
 
         private static string tokenKey = "TOKENKEY";
+        private static string tokenLive = "TOKENLIVE";
 
         private AuthenticationState Anonymous => new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
 
@@ -30,20 +32,29 @@ namespace Ember.Client.Auth
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
             string token = await jsRuntime.GetFromLocalStorage(tokenKey);
+            string expiration = await jsRuntime.GetFromLocalStorage(tokenLive);
 
-            if (string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(token) && string.IsNullOrEmpty(expiration))
             {
+                return Anonymous;
+            }
+
+            if (DateTime.Now > DateTime.Parse(expiration))
+            {
+                await Logout();
+
                 return Anonymous;
             }
 
             return BuildAuthenticationState(token);
         }
 
-        public async Task Login(string token)
+        public async Task Login(UserToken userToken)
         {
-            await jsRuntime.SetInLocalStorage(tokenKey, token);
+            await jsRuntime.SetInLocalStorage(tokenKey, userToken.Token);
+            await jsRuntime.SetInLocalStorage(tokenLive, userToken.Expiration.ToString());
 
-            AuthenticationState authState = BuildAuthenticationState(token);
+            AuthenticationState authState = BuildAuthenticationState(userToken.Token);
 
             NotifyAuthenticationStateChanged(Task.FromResult(authState));
         }
@@ -53,6 +64,7 @@ namespace Ember.Client.Auth
             httpClient.DefaultRequestHeaders.Authorization = null;
             
             await jsRuntime.RemoveItem(tokenKey);
+            await jsRuntime.RemoveItem(tokenLive);
 
             NotifyAuthenticationStateChanged(Task.FromResult(Anonymous));
         }

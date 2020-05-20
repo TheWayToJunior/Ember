@@ -54,7 +54,7 @@
             var userToken = JsonSerializer.Deserialize<UserToken>(responsString,
                 new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-            await loginService.Login(userToken.Token);
+            await loginService.Login(userToken);
 
             navigationManager.NavigateTo("/account");
         }
