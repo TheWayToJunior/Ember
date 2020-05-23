@@ -1,18 +1,20 @@
 ﻿@page "/"
 @layout MainLayout
+
+@inject IModalService Modal
 @inject IJSRuntime JsRuntime
 @inject HttpClient HttpClient
 
-    <Intro BodyId="@("body")" ImgSource="https://invest26.ru/upload/iblock/400/4002b07f21461f6546535fe41833872b.JPG">
-        @*/img/banner-index.jpg*@
-        <div class="banner-text">
-            <h2>СПП Уголек <br> ГП <span>Донбасстепло<span class="text-primary">энерго</span></span></h2>
-            <p>
-                предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
-                для обеспечения комфортных условий труда и проживания граждан.
-            </p>
-        </div>
-    </Intro>
+<Intro BodyId="@("body")" ImgSource="https://invest26.ru/upload/iblock/400/4002b07f21461f6546535fe41833872b.JPG">
+    @*/img/banner-index.jpg*@
+    <div class="banner-text">
+        <h2>СПП Уголек <br> ГП <span>Донбасстепло<span class="text-primary">энерго</span></span></h2>
+        <p>
+            предприятие, созданное с целью бесперебойного снабжения потребителей качественным теплом,
+            для обеспечения комфортных условий труда и проживания граждан.
+        </p>
+    </div>
+</Intro>
 
 <header id="header">
     <NavMenu Image="/img/Logo.png" CssClassImage="logo-img" />
@@ -26,7 +28,7 @@
                 <p class="lead">
                     Наш сервис позволит вам получить информацию о состоянии вашего лицевого счета не выходя из дома
                 </p>
-                 <div class="btn-group">
+                <div class="btn-group">
                     <button class="btn btn-primary waves-effect d-flex align-items-center">
                         <span class="material-icons icon">
                             person_add
@@ -135,7 +137,8 @@
                     В случае необходимости вы можете связаться с нами отправив нам свой коментарий
                 </p>
                 <div class="btn-group">
-                    <button class="btn btn-primary waves-effect d-flex align-items-center">
+                    <button class="btn btn-primary waves-effect d-flex align-items-center"
+                            @onclick="@(() => Modal.Show<Feedback>("Отправте сообщение"))">
                         <span class="material-icons icon">
                             insert_comment
                         </span>
@@ -144,13 +147,13 @@
                 </div>
             </div>
 
-                <Contacts ContactInfo="contacts"
-                          Image="https://nua.in.ua/wp-content/uploads/2014/03/5571.jpg">
-                    <Background>
-                        <div id="map"></div>
-                    </Background>
-                </Contacts>
-            </div>
+            <Contacts ContactInfo="contacts"
+                      Image="https://nua.in.ua/wp-content/uploads/2014/03/5571.jpg">
+                <Background>
+                    <div id="map"></div>
+                </Background>
+            </Contacts>
+        </div>
     </div>
 </div>
 

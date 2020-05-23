@@ -171,3 +171,5 @@ D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Account
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Pages\Account\Statistics.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Client.pdb
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Shared.pdb
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\Feedback.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\Feedback.razor.g.cs

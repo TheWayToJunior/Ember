@@ -55,6 +55,7 @@ namespace Ember.Server
                     ClockSkew = TimeSpan.Zero
                 });
 
+            services.AddScoped<EmailService>();
             services.AddScoped<INewsService, NewsService>();
 
             services.AddMvcCore().AddAuthorization();

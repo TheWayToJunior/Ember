@@ -8,3 +8,6 @@ dotnet_diagnostic.CA1052.severity = none
 
 # CA1305: Укажите IFormatProvider
 dotnet_diagnostic.CA1305.severity = none
+
+# CA1303: Не передавать литералы в качестве локализованных параметров
+dotnet_diagnostic.CA1303.severity = none

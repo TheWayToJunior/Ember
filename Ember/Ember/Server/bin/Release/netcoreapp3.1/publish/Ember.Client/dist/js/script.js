@@ -103,3 +103,31 @@ window.initPieChart = function (users, editors, admins) {
         }
     });
 }
+
+window.initChartBar = function () {
+    var ctx = document.getElementById("easionChartjsBar").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            datasets: [{
+                label: 'Blue',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: window.chartColors.primary,
+                borderColor: 'transparent'
+            }]
+        },
+        options: {
+            legend: {
+                display: false
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+}

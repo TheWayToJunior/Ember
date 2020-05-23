@@ -176,6 +176,9 @@ D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Ember.Server.StaticW
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Blazored.Modal.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Forms.dll
 D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Components.Web.dll
-D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.MvcApplicationPartsAssemblyInfo.cache
-D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.csproj.CoreCompileInputs.cache
 D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.genruntimeconfig.cache
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\С#\.NET Core\Ember\Ember\Server\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.csproj.CoreCompileInputs.cache
+D:\С#\.NET Core\Ember\Ember\Server\obj\Debug\netcoreapp3.1\Ember.Server.MvcApplicationPartsAssemblyInfo.cache
