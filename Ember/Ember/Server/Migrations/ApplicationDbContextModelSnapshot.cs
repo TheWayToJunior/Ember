@@ -19,6 +19,43 @@ namespace Ember.Server.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Ember.Shared.Account", b =>
+                {
+                    b.Property<string>("Number")
+                        .HasColumnType("nvarchar(6)")
+                        .HasMaxLength(6);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Payment")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Number");
+
+                    b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            Number = "193216",
+                            Address = "ул. Великан д. 21 кв. 28",
+                            Payment = 125m
+                        },
+                        new
+                        {
+                            Number = "321619",
+                            Address = "ул. Жарова д. 5а кв. 47",
+                            Payment = 75m
+                        },
+                        new
+                        {
+                            Number = "161932",
+                            Address = "ул. Нежская д. 19",
+                            Payment = 547m
+                        });
+                });
+
             modelBuilder.Entity("Ember.Shared.NewsPost", b =>
                 {
                     b.Property<int>("Id")
@@ -59,7 +96,7 @@ namespace Ember.Server.Migrations
                             Category = 2,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
                             ImageSrc = "https://sun9-9.userapi.com/c850128/v850128254/1d36a9/B54sYaowd5E.jpg",
-                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 955, DateTimeKind.Local).AddTicks(9501),
+                            Time = new DateTime(2020, 5, 28, 15, 49, 39, 86, DateTimeKind.Local).AddTicks(2299),
                             Title = "Об итогах ремонтного периода."
                         },
                         new
@@ -68,7 +105,7 @@ namespace Ember.Server.Migrations
                             Category = 2,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
                             ImageSrc = "https://sun9-28.userapi.com/c204516/v204516299/3b411/0qjhwQo15mw.jpg",
-                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 958, DateTimeKind.Local).AddTicks(7957),
+                            Time = new DateTime(2020, 5, 28, 15, 49, 39, 89, DateTimeKind.Local).AddTicks(4835),
                             Title = "Внимание произвадятся работы!!!"
                         },
                         new
@@ -77,9 +114,47 @@ namespace Ember.Server.Migrations
                             Category = 3,
                             Description = "Согласно Правил подготовки теплового хозяйства к отопительному сезону предприятием были разработаны мероприятия по подготовке объектов теплоснабжения к работе в осеннее-зимний",
                             ImageSrc = "https://sun9-35.userapi.com/c851028/v851028124/196804/0j89FAqJ5Wg.jpg",
-                            Time = new DateTime(2020, 4, 14, 19, 8, 51, 958, DateTimeKind.Local).AddTicks(8127),
+                            Time = new DateTime(2020, 5, 28, 15, 49, 39, 89, DateTimeKind.Local).AddTicks(5040),
                             Title = "Инвестиционная программа 2019 года"
                         });
+                });
+
+            modelBuilder.Entity("Ember.Shared.PaymentHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AccountNumber")
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Payment")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountNumber");
+
+                    b.ToTable("PaymentHistory");
+                });
+
+            modelBuilder.Entity("Ember.Shared.UserAccount", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AccountId")
+                        .HasColumnType("nvarchar(6)");
+
+                    b.HasKey("UserId", "AccountId");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("UsersAccounts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -276,6 +351,28 @@ namespace Ember.Server.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Ember.Shared.PaymentHistory", b =>
+                {
+                    b.HasOne("Ember.Shared.Account", "Account")
+                        .WithMany("PaymentHistories")
+                        .HasForeignKey("AccountNumber");
+                });
+
+            modelBuilder.Entity("Ember.Shared.UserAccount", b =>
+                {
+                    b.HasOne("Ember.Shared.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

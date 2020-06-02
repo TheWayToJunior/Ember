@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Ember.Server.Services;
-using Ember.Shared;
-using Microsoft.AspNetCore.Http;
+﻿using Ember.Shared;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+using System;
+using System.Threading.Tasks;
 
 namespace Ember.Server.Controllers
 {
@@ -14,9 +9,9 @@ namespace Ember.Server.Controllers
     [ApiController]
     public class FeedbackController : ControllerBase
     {
-        private readonly EmailService emailService;
+        private readonly IEmailService emailService;
 
-        public FeedbackController(EmailService emailService, IConfiguration configuration)
+        public FeedbackController(IEmailService emailService)
         {
             this.emailService = emailService ?? throw new ArgumentNullException(nameof(emailService));
         }

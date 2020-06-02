@@ -173,3 +173,7 @@ D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bi
 D:\С#\.NET Core\Ember\Ember\Client\bin\Debug\netstandard2.1\dist\_framework\_bin\Ember.Shared.pdb
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\Feedback.razor.g.cs
 D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\Feedback.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\BindAccount.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\BindAccount.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\RazorDeclaration\Shared\Modal\UnlinkAccount.razor.g.cs
+D:\С#\.NET Core\Ember\Ember\Client\obj\Debug\netstandard2.1\Razor\Shared\Modal\UnlinkAccount.razor.g.cs

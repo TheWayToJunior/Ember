@@ -104,7 +104,10 @@ window.initPieChart = function (users, editors, admins) {
     });
 }
 
-window.initChartBar = function () {
+window.initChartBar = function (weekday) {
+    //$('#easionChartjsBar').remove();
+    //$('#graph-container').append('<canvas id="easionChartjsBar"><canvas>');
+
     var ctx = document.getElementById("easionChartjsBar").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
@@ -112,7 +115,7 @@ window.initChartBar = function () {
             labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
             datasets: [{
                 label: 'Blue',
-                data: [12, 19, 3, 5, 2],
+                data: [weekday.monday, weekday.tuesday, weekday.wednesday, weekday.thursday, weekday.friday],
                 backgroundColor: window.chartColors.primary,
                 borderColor: 'transparent'
             }]

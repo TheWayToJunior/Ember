@@ -48,9 +48,9 @@ namespace Ember.Client.Helpers
             await JSRuntime.InvokeVoidAsync("initPieChart", usets, editors, admins);
         }
 
-        public static async ValueTask InitChartBar(this IJSRuntime JSRuntime)
+        public static async ValueTask InitChartBar(this IJSRuntime JSRuntime, object weekday)
         {
-            await JSRuntime.InvokeVoidAsync("initChartBar");
+            await JSRuntime.InvokeVoidAsync("initChartBar", weekday);
         }
     }
 }

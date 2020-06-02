@@ -27,6 +27,10 @@ namespace Ember.Server
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options => 
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
@@ -55,8 +59,9 @@ namespace Ember.Server
                     ClockSkew = TimeSpan.Zero
                 });
 
-            services.AddScoped<EmailService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<IBindAccountService, BindAccountService>();
 
             services.AddMvcCore().AddAuthorization();
 

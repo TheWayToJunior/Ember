@@ -14,7 +14,7 @@ namespace Ember.Server.Services
 
         public NewsService(ApplicationDbContext context)
         {
-            this.context = context;
+            this.context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public IQueryable<NewsPost> GetAll() => context.Posts;

@@ -260,3 +260,6 @@ D:\С#\.NET Core\Ember\Ember.XUnitTest\bin\Debug\netcoreapp3.1\runtimes\win-x64\
 D:\С#\.NET Core\Ember\Ember.XUnitTest\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\e_sqlite3.dll
 D:\С#\.NET Core\Ember\Ember.XUnitTest\obj\Debug\netcoreapp3.1\Ember.XUnitTest.csproj.CoreCompileInputs.cache
 D:\С#\.NET Core\Ember\Ember.XUnitTest\obj\Debug\netcoreapp3.1\Ember.XUnitTest.genruntimeconfig.cache
+D:\С#\.NET Core\Ember\Ember.XUnitTest\bin\Debug\netcoreapp3.1\MailKit.dll
+D:\С#\.NET Core\Ember\Ember.XUnitTest\bin\Debug\netcoreapp3.1\MimeKit.dll
+D:\С#\.NET Core\Ember\Ember.XUnitTest\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll

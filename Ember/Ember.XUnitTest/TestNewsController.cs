@@ -50,7 +50,7 @@ namespace Ember.XUnitTest
             NewsController controller = new NewsController(mock.Object);
 
             // Act
-            var okResult = await controller.GetAll(new PaginationDTO());
+            var okResult = await controller.GetAll(new Pagination());
 
             // Assert
             Assert.IsType<OkObjectResult>(okResult.Result);
@@ -66,7 +66,7 @@ namespace Ember.XUnitTest
 
             NewsController controller = new NewsController(mock.Object);
 
-            var pagination = new PaginationDTO() { QuantityPerPage = 3};
+            var pagination = new Pagination() { QuantityPerPage = 3};
 
             // Act
             var okResult = (await controller.GetAll(pagination)).Result as OkObjectResult;
@@ -90,7 +90,7 @@ namespace Ember.XUnitTest
             NewsController controller = new NewsController(mock.Object);
 
             // Act
-            var okResult = (await controller.GetAll(new PaginationDTO() { QuantityPerPage = 1, Page = 1}, CategoryMode.Repair))
+            var okResult = (await controller.GetAll(new Pagination() { QuantityPerPage = 1, Page = 1}, CategoryMode.Repair))
                 .Result as OkObjectResult;
 
             // Assert

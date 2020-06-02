@@ -18,12 +18,43 @@ namespace Ember.Server.Data
 
         public DbSet<NewsPost> Posts { get; set; }
 
+        public DbSet<Account> Accounts { get; set; }
+
+        public DbSet<UserAccount> UsersAccounts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             if (builder == null)
             {
                 throw new ArgumentNullException(nameof(builder));
             }
+
+            builder.Entity<UserAccount>().HasKey(ua => new { ua.UserId, ua.AccountId });
+
+            builder.Entity<Account>().HasData(
+                new Account[]
+                {
+                    new Account
+                    {
+                        Number = "193216",
+                        Payment = 125,
+                        Address = "ул. Великан д. 21 кв. 28"
+                    },
+
+                    new Account
+                    {
+                        Number = "321619",
+                        Payment = 75,
+                        Address = "ул. Жарова д. 5а кв. 47"
+                    },
+
+                    new Account
+                    {
+                        Number = "161932",
+                        Payment = 547,
+                        Address = "ул. Нежская д. 19"
+                    }
+                });
 
             builder.Entity<NewsPost>().HasData(
                     new NewsPost[]

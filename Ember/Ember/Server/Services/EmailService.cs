@@ -4,13 +4,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MimeKit;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Ember.Server.Services
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
         private readonly ILogger<EmailService> logger;
         private readonly IConfiguration configuration;
@@ -23,7 +21,7 @@ namespace Ember.Server.Services
 
         public async Task SendMessage(SendMessage message)
         {
-            if(message == null)
+            if (message == null)
                 throw new ArgumentNullException(nameof(message));
 
             try
@@ -34,9 +32,9 @@ namespace Ember.Server.Services
                 emailMessage.To.Add(new MailboxAddress(configuration["email:recipient"]));
 
                 emailMessage.Subject = $"Feedback";
-                emailMessage.Body = new BodyBuilder() 
-                { 
-                    HtmlBody = $"<h4>Contact me by email: {message.Email}</h4>{message.TextBody}" 
+                emailMessage.Body = new BodyBuilder()
+                {
+                    HtmlBody = $"<h4>Contact me by email: {message.Email}</h4>{message.TextBody}"
                 }
                 .ToMessageBody();
 
